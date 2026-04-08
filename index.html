@@ -27,8 +27,6 @@ body{
   background:var(--bg);color:var(--text);
   font-size:16px;line-height:1.7;
 }
-
-/* NAV */
 nav{
   position:sticky;top:0;z-index:100;
   background:var(--bg);border-bottom:0.5px solid var(--border);
@@ -40,12 +38,7 @@ nav{
 .nav-links{display:flex;gap:1.5rem}
 .nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--text)}
-
-/* HERO */
-.hero{
-  max-width:760px;margin:0 auto;
-  padding:5rem 2rem 4rem;
-}
+.hero{max-width:760px;margin:0 auto;padding:5rem 2rem 4rem}
 .eyebrow{
   font-size:12px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--subtle);margin-bottom:1.25rem;
@@ -72,23 +65,14 @@ h1 em{font-style:normal;color:var(--muted)}
 .btn-primary:hover{opacity:.85}
 .btn-ghost{border:0.5px solid var(--border);color:var(--text);background:transparent}
 .btn-ghost:hover{background:var(--bg2)}
-
-/* TAGS */
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4rem}
-.tag{
-  font-size:12px;padding:4px 12px;border-radius:100px;
-  border:0.5px solid var(--border);color:var(--muted);
-}
-
-/* SECTION */
+.tag{font-size:12px;padding:4px 12px;border-radius:100px;border:0.5px solid var(--border);color:var(--muted)}
 section{max-width:760px;margin:0 auto;padding:3rem 2rem}
 .section-label{
   font-size:11px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--subtle);margin-bottom:1.75rem;
 }
 hr.div{border:none;border-top:0.5px solid var(--border);max-width:760px;margin:0 auto}
-
-/* CARDS */
 .card-grid{display:grid;gap:12px}
 .card{
   background:var(--bg2);border:0.5px solid var(--border);
@@ -97,9 +81,6 @@ hr.div{border:none;border-top:0.5px solid var(--border);max-width:760px;margin:0
 .card-accent{width:24px;height:3px;border-radius:2px;margin-bottom:.75rem}
 .card-title{font-size:15px;font-weight:500;margin-bottom:.4rem}
 .card-sub{font-size:13px;color:var(--muted);line-height:1.6}
-.card-meta{font-size:12px;color:var(--subtle);margin-top:.5rem}
-
-/* WORK ITEM */
 .work-item{
   display:grid;grid-template-columns:3px 1fr;gap:0 16px;
   padding:1.25rem 0;border-bottom:0.5px solid var(--border);
@@ -113,25 +94,6 @@ hr.div{border:none;border-top:0.5px solid var(--border);max-width:760px;margin:0
   display:inline-block;font-size:11px;padding:3px 9px;
   border-radius:100px;font-weight:500;margin-top:.5rem;
 }
-
-/* STACK */
-.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.stack-card{
-  background:var(--bg2);border:0.5px solid var(--border);
-  border-radius:10px;padding:1rem 1.1rem;
-}
-.stack-label{font-size:11px;color:var(--subtle);margin-bottom:6px;letter-spacing:.05em;text-transform:uppercase}
-.stack-items{font-size:13px;color:var(--muted);line-height:1.9}
-
-/* QUOTE */
-.quote{
-  font-size:20px;line-height:1.7;color:var(--text);
-  padding-left:1.5rem;border-left:2px solid var(--border);
-  max-width:600px;margin:0 auto;
-  font-family:Georgia,serif;
-}
-
-/* FOOTER */
 footer{
   max-width:760px;margin:0 auto;
   padding:2rem 2rem 3rem;
@@ -143,10 +105,8 @@ footer p{font-size:13px;color:var(--subtle)}
 .footer-links{display:flex;gap:1.25rem}
 .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
 .footer-links a:hover{color:var(--text)}
-
 @media(max-width:520px){
   h1{font-size:32px}
-  .stack-grid{grid-template-columns:1fr 1fr}
   nav{padding:0 1rem}
   section,.hero{padding-left:1rem;padding-right:1rem}
 }
@@ -159,15 +119,14 @@ footer p{font-size:13px;color:var(--subtle)}
   <div class="nav-links">
     <a href="#work">Work</a>
     <a href="#building">Building</a>
-    <a href="#stack">Stack</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="eyebrow"><span class="dot"></span>Paris — 2025</div>
-  <h1>CTO, co-founder,<br><em>builder of things</em><br>that should exist.</h1>
-  <p class="hero-sub">I co-founded Kanop — using AI and satellite imagery to bring transparency to carbon markets. I've cared about climate since before it was my job. Alongside that, I build systems that make life run better: autonomous agents, personal infrastructure, and tools that work while you don't.</p>
+  <div class="eyebrow"><span class="dot"></span>Paris · 2026</div>
+  <h1>Founder.<br><em>Builder.</em></h1>
+  <p class="hero-sub">Scaling Kanop, the geospatial intelligence partner for nature: AI and satellite data in service of forests, biodiversity and the people who depend on them. In parallel, I ship autonomous systems that run the operational layer of life and other businesses.</p>
   <div class="cta-row">
     <a href="https://www.kanop.io" class="btn btn-primary" target="_blank">Kanop.io ↗</a>
     <a href="https://linkedin.com/in/louis-de-vitry" class="btn btn-ghost" target="_blank">LinkedIn</a>
@@ -177,14 +136,12 @@ footer p{font-size:13px;color:var(--subtle)}
 
 <div style="max-width:760px;margin:0 auto;padding:0 2rem 3rem">
   <div class="tags">
-    <span class="tag">ClimateTech</span>
     <span class="tag">AI / ML</span>
-    <span class="tag">Satellite imagery</span>
-    <span class="tag">Carbon markets</span>
-    <span class="tag">Autonomous agents</span>
-    <span class="tag">Precision forestry</span>
     <span class="tag">Computer vision</span>
-    <span class="tag">Python</span>
+    <span class="tag">Autonomous agents</span>
+    <span class="tag">ClimateTech</span>
+    <span class="tag">Carbon markets</span>
+    <span class="tag">Satellite imagery</span>
   </div>
 </div>
 
@@ -198,9 +155,10 @@ footer p{font-size:13px;color:var(--subtle)}
       <div class="work-bar" style="background:var(--teal)"></div>
       <div>
         <div class="work-title">Kanop</div>
-        <div class="work-role">CTO &amp; Co-founder · 2021 — present</div>
-        <div class="work-desc">Co-founded Kanop with Romain Fau at Entrepreneur First. We build digital twins of forests at individual-tree resolution — using satellite imagery (optical + SAR) and deep learning to measure carbon sequestration, biodiversity indices, and ecosystem services at scale. SaaS platform for carbon project developers and forestry managers navigating EUDR and CSRD.</div>
-        <span class="badge" style="background:var(--teal-bg);color:var(--teal-text)">CASSINI Accelerator · Best pitch Dealflow.eu 2024</span>
+        <div class="work-role">Co-founder · CTO · April 2021 to today</div>
+        <div class="work-desc">Kanop is the geospatial intelligence partner for nature. We combine AI, satellite imagery and scientific expertise to estimate above-ground biomass, track biodiversity, and deliver rigorous MRV for nature-based solutions and supply chains. Operating globally, across forests and ecosystems on every continent. Built from scratch in 2021, now a team of engineers and scientists working at continental scale.</div>
+        <span class="badge" style="background:var(--bg2);color:var(--muted);border:0.5px solid var(--border)">IEEE Geoscience 2025 · EUSIPCO 2024 · CASSINI winner · EO Summit speaker</span>
+        <a href="https://kanop.io" target="_blank" class="badge" style="background:var(--teal-bg);color:var(--teal-text);text-decoration:none;margin-left:6px">kanop.io ↗</a>
       </div>
     </div>
 
@@ -208,8 +166,8 @@ footer p{font-size:13px;color:var(--subtle)}
       <div class="work-bar" style="background:var(--blue)"></div>
       <div>
         <div class="work-title">TheraPanacea</div>
-        <div class="work-role">AI Engineer</div>
-        <div class="work-desc">Worked on multi-modal medical image analysis for cancer treatment planning — deep learning on CT/MRI data for radiotherapy dose optimization.</div>
+        <div class="work-role">Research Engineer · June 2019 to April 2021</div>
+        <div class="work-desc">Built deep learning systems for oncology that ended up in clinical use. Automated segmentation of 80+ organs at risk, multi-modal image registration across CT and MRI, dose planning for radiotherapy. FDA and CE certified. Now used in roughly 20% of radiotherapy treatments in France. Did it all in MXNet, before PyTorch won the war.</div>
       </div>
     </div>
 
@@ -217,18 +175,18 @@ footer p{font-size:13px;color:var(--subtle)}
       <div class="work-bar" style="background:var(--blue)"></div>
       <div>
         <div class="work-title">Shippeo · Lucky Cart</div>
-        <div class="work-role">Earlier roles</div>
-        <div class="work-desc">Applied ML in logistics and retail analytics — ETA prediction for truck deliveries, predictive models for consumer behaviour in retail.</div>
+        <div class="work-role">Data Scientist · 2017 to 2019</div>
+        <div class="work-desc">Started writing ML models in R. At Shippeo, built arrival time prediction that outperformed Google Maps and HERE APIs for freight-specific logistics. At Lucky Cart, modelled promotional ROI in a market where 59% of promotions lose money. A different era and a good one to have started in.</div>
       </div>
     </div>
 
     <div class="work-item">
       <div class="work-bar" style="background:var(--subtle)"></div>
       <div>
-        <div class="work-title">Student research · CentraleSupélec / EPFL / KTH</div>
-        <div class="work-role">2018 — 2020</div>
-        <div class="work-desc">Multi-modal medical image registration and organ segmentation for radiotherapy. Social circle inference on networks. Time series encoded as images. Wrote a public ML blog covering computer vision, NLP, reinforcement learning and network science — and a section on climate change, two years before founding a ClimateTech company.</div>
-        <span class="badge" style="background:var(--bg2);color:var(--muted);border:0.5px solid var(--border)">devitrylouis.github.io · 2019</span>
+        <div class="work-title">Student · EPFL · CentraleSupélec · KTH</div>
+        <div class="work-role">2016 to 2020</div>
+        <div class="work-desc">Started with pure mathematics at EPFL, the kind that makes everything else feel tractable. Moved into machine learning when the term still needed explaining, graduating top of class at CentraleSupélec's MSc in AI. Spent time across three countries, three research cultures, and enough linear algebra to last a lifetime. Wrote a public blog documenting what I was learning, and a section on climate change that turned out to be a preview of the next decade.</div>
+        <a href="https://devitrylouis.github.io" target="_blank" class="badge" style="background:var(--bg2);color:var(--muted);border:0.5px solid var(--border);text-decoration:none">devitrylouis.github.io · 2019 ↗</a>
       </div>
     </div>
 
@@ -243,16 +201,15 @@ footer p{font-size:13px;color:var(--subtle)}
 
     <div class="card">
       <div class="card-accent" style="background:var(--teal)"></div>
-      <div class="card-title">Autonomous personal operating system</div>
-      <div class="card-sub">A Telegram-native chief-of-staff agent built on Ollama (local LLMs) + Claude, wired into Gmail, Google Calendar, Drive, Strava and Garmin. It handles email triage, meeting briefs, CRM sequences, reminders, and fitness summaries — all running on a local Mac while I'm doing something else.</div>
-      <div class="card-meta">Python · Claude Sonnet · Qwen3 · APScheduler · SQLite · ReAct loops</div>
+      <div class="card-title">A personal operating system</div>
+      <div class="card-sub">An autonomous agent that runs the operational layer of my life: emails, meetings, relationships, logistics, without being asked. It works while I sleep, flags what actually needs me, and handles everything else. The goal isn't productivity. It's a different relationship with time.</div>
     </div>
 
     <div class="card">
       <div class="card-accent" style="background:var(--amber)"></div>
-      <div class="card-title">KozyCare</div>
-      <div class="card-sub">Autonomising my wife's premium sleep product business — wiring the same agent stack into customer ops, lead gen, CRM sequences, and partnerships so the business runs without daily management.</div>
-      <div class="card-meta">E-commerce · Agent automation · €500 net margin per unit</div>
+      <div class="card-title">KozyCare · building with my wife</div>
+      <div class="card-sub">Effortless rest for the ones who never stop. That's the idea behind KozyCare. My wife is building a sleep brand for people who live at full intensity. I'm building the infrastructure underneath it, so she can focus entirely on the product and the people it's for.</div>
+      <a href="https://kozycare.lovable.app" target="_blank" class="badge" style="background:var(--amber-bg);color:var(--amber-text);text-decoration:none;margin-top:.75rem;display:inline-block">kozycare.lovable.app ↗</a>
     </div>
 
   </div>
@@ -260,47 +217,23 @@ footer p{font-size:13px;color:var(--subtle)}
 
 <hr class="div">
 
-<section>
-  <div class="quote">
-    "Not prompted. Running. So the only question left is what to do with the time it frees."
-  </div>
-</section>
-
-<hr class="div">
-
-<section id="stack">
-  <p class="section-label">Technical stack</p>
-  <div class="stack-grid">
-    <div class="stack-card">
-      <div class="stack-label">AI / ML</div>
-      <div class="stack-items">PyTorch<br>Computer vision<br>SAR / optical fusion<br>Deep learning<br>ReAct agents<br>Ollama (local LLMs)</div>
+<section id="publications">
+  <p class="section-label">Publications</p>
+  <div>
+    <div class="work-item">
+      <div class="work-bar" style="background:var(--subtle)"></div>
+      <div>
+        <div class="work-desc"><a href="https://ieeexplore.ieee.org/document/10950418" target="_blank" style="color:var(--text);text-decoration:none;font-weight:500">Extending InSAR2InSAR to Sentinel-1 Data</a> <span style="color:var(--subtle);font-size:13px">· IEEE Geoscience and Remote Sensing Letters · 2025</span></div>
+      </div>
     </div>
-    <div class="stack-card">
-      <div class="stack-label">Languages &amp; infra</div>
-      <div class="stack-items">Python (primary)<br>SQL / SQLite<br>Async / aiosqlite<br>APScheduler<br>REST APIs</div>
-    </div>
-    <div class="stack-card">
-      <div class="stack-label">External APIs</div>
-      <div class="stack-items">Anthropic (Claude)<br>Google Workspace<br>Telegram Bot<br>Strava · Garmin<br>Pub/Sub</div>
-    </div>
-    <div class="stack-card">
-      <div class="stack-label">Education</div>
-      <div class="stack-items">MSc AI — CentraleSupélec<br>EPFL (Lausanne)<br>KTH (Stockholm)</div>
-    </div>
-    <div class="stack-card">
-      <div class="stack-label">Domain expertise</div>
-      <div class="stack-items">Carbon markets<br>Nature-based solutions<br>Remote sensing<br>MRV / EUDR / CSRD<br>Agentic systems</div>
-    </div>
-    <div class="stack-card">
-      <div class="stack-label">Hardware</div>
-      <div class="stack-items">M4 Pro 24GB<br>Local LLM inference<br>Whisper (CPU)<br>24/7 agent runtime</div>
+    <div class="work-item">
+      <div class="work-bar" style="background:var(--subtle)"></div>
+      <div>
+        <div class="work-desc"><a href="https://ieeexplore.ieee.org/document/10715155" target="_blank" style="color:var(--text);text-decoration:none;font-weight:500">InSAR2InSAR: A Self-Supervised Method for InSAR Parameters Estimation</a> <span style="color:var(--subtle);font-size:13px">· EUSIPCO · 2024</span></div>
+      </div>
     </div>
   </div>
 </section>
-
-<hr class="div">
-
-<footer id="contact">
   <p>Paris, France · <a href="mailto:louisdevitry@gmail.com" style="color:var(--muted);text-decoration:none">louisdevitry@gmail.com</a></p>
   <div class="footer-links">
     <a href="https://linkedin.com/in/louis-de-vitry" target="_blank">LinkedIn</a>
