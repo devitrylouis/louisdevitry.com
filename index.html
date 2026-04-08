@@ -81,6 +81,17 @@ hr.div{border:none;border-top:0.5px solid var(--border);max-width:760px;margin:0
 .card-accent{width:24px;height:3px;border-radius:2px;margin-bottom:.75rem}
 .card-title{font-size:15px;font-weight:500;margin-bottom:.4rem}
 .card-sub{font-size:13px;color:var(--muted);line-height:1.6}
+.featured-post{
+  display:block;text-decoration:none;
+  background:var(--bg2);border:0.5px solid var(--border);
+  border-radius:12px;padding:1.5rem;
+  transition:border-color .15s;
+}
+.featured-post:hover{border-color:var(--text)}
+.post-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);margin-bottom:.6rem}
+.post-title{font-size:18px;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:.5rem}
+.post-sub{font-size:14px;color:var(--muted);line-height:1.6}
+.post-cta{font-size:13px;color:var(--teal);margin-top:.75rem;display:block}
 .work-item{
   display:grid;grid-template-columns:3px 1fr;gap:0 16px;
   padding:1.25rem 0;border-bottom:0.5px solid var(--border);
@@ -117,8 +128,9 @@ footer p{font-size:13px;color:var(--subtle)}
 <nav>
   <span class="nav-logo">Louis de Vitry</span>
   <div class="nav-links">
-    <a href="#work">Work</a>
+    <a href="#writing">Writing</a>
     <a href="#building">Building</a>
+    <a href="#work">Work</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -126,7 +138,7 @@ footer p{font-size:13px;color:var(--subtle)}
 <div class="hero">
   <div class="eyebrow"><span class="dot"></span>Paris · 2026</div>
   <h1>Founder.<br><em>Builder.</em></h1>
-  <p class="hero-sub">Scaling Kanop, the geospatial intelligence partner for nature: AI and satellite data in service of forests, biodiversity and the people who depend on them. In parallel, I ship autonomous systems that run the operational layer of life and other businesses.</p>
+  <p class="hero-sub">Scaling Kanop, the geospatial intelligence partner for nature: AI and satellite data in service of forests, biodiversity and the people who depend on them. In parallel, I ship autonomous systems to make my life, life.</p>
   <div class="cta-row">
     <a href="https://www.kanop.io" class="btn btn-primary" target="_blank">Kanop.io ↗</a>
     <a href="https://linkedin.com/in/louis-de-vitry" class="btn btn-ghost" target="_blank">LinkedIn</a>
@@ -147,10 +159,40 @@ footer p{font-size:13px;color:var(--subtle)}
 
 <hr class="div">
 
+<section id="writing">
+  <p class="section-label">Latest writing</p>
+  <a href="https://louisdevitry.substack.com/p/the-personal-ai-im-not-willing-to" target="_blank" class="featured-post">
+    <div class="post-eyebrow">Substack · First post</div>
+    <div class="post-title">The personal AI I'm not willing to outsource</div>
+    <div class="post-sub">Before I automate parts of my life, I want to know what I'm handing over — so I'm building it myself.</div>
+    <span class="post-cta">Read on Substack ↗</span>
+  </a>
+</section>
+
+<hr class="div">
+
+<section id="building">
+  <p class="section-label">What I'm building on the side</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-accent" style="background:var(--teal)"></div>
+      <div class="card-title">A personal operating system</div>
+      <div class="card-sub">An autonomous agent that runs the operational layer of my life: emails, meetings, relationships, logistics, without being asked. It works while I sleep, flags what actually needs me, and handles everything else. The goal isn't productivity. It's a different relationship with time.</div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:var(--amber)"></div>
+      <div class="card-title">KozyCare · building with my wife</div>
+      <div class="card-sub">Effortless rest for the ones who never stop. That's the idea behind KozyCare. My wife is building a sleep brand for people who live at full intensity. I'm building the infrastructure underneath it, so she can focus entirely on the product and the people it's for.</div>
+      <a href="https://kozycare.lovable.app" target="_blank" class="badge" style="background:var(--amber-bg);color:var(--amber-text);text-decoration:none;margin-top:.75rem;display:inline-block">kozycare.lovable.app ↗</a>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
 <section id="work">
   <p class="section-label">Experience</p>
   <div>
-
     <div class="work-item">
       <div class="work-bar" style="background:var(--teal)"></div>
       <div>
@@ -161,7 +203,6 @@ footer p{font-size:13px;color:var(--subtle)}
         <a href="https://kanop.io" target="_blank" class="badge" style="background:var(--teal-bg);color:var(--teal-text);text-decoration:none;margin-left:6px">kanop.io ↗</a>
       </div>
     </div>
-
     <div class="work-item">
       <div class="work-bar" style="background:var(--blue)"></div>
       <div>
@@ -170,7 +211,6 @@ footer p{font-size:13px;color:var(--subtle)}
         <div class="work-desc">Built deep learning systems for oncology that ended up in clinical use. Automated segmentation of 80+ organs at risk, multi-modal image registration across CT and MRI, dose planning for radiotherapy. FDA and CE certified. Now used in roughly 20% of radiotherapy treatments in France. Did it all in MXNet, before PyTorch won the war.</div>
       </div>
     </div>
-
     <div class="work-item">
       <div class="work-bar" style="background:var(--blue)"></div>
       <div>
@@ -179,7 +219,6 @@ footer p{font-size:13px;color:var(--subtle)}
         <div class="work-desc">Started writing ML models in R. At Shippeo, built arrival time prediction that outperformed Google Maps and HERE APIs for freight-specific logistics. At Lucky Cart, modelled promotional ROI in a market where 59% of promotions lose money. A different era and a good one to have started in.</div>
       </div>
     </div>
-
     <div class="work-item">
       <div class="work-bar" style="background:var(--subtle)"></div>
       <div>
@@ -189,29 +228,6 @@ footer p{font-size:13px;color:var(--subtle)}
         <a href="https://devitrylouis.github.io" target="_blank" class="badge" style="background:var(--bg2);color:var(--muted);border:0.5px solid var(--border);text-decoration:none">devitrylouis.github.io · 2019 ↗</a>
       </div>
     </div>
-
-  </div>
-</section>
-
-<hr class="div">
-
-<section id="building">
-  <p class="section-label">What I'm building on the side</p>
-  <div class="card-grid">
-
-    <div class="card">
-      <div class="card-accent" style="background:var(--teal)"></div>
-      <div class="card-title">A personal operating system</div>
-      <div class="card-sub">An autonomous agent that runs the operational layer of my life: emails, meetings, relationships, logistics, without being asked. It works while I sleep, flags what actually needs me, and handles everything else. The goal isn't productivity. It's a different relationship with time.</div>
-    </div>
-
-    <div class="card">
-      <div class="card-accent" style="background:var(--amber)"></div>
-      <div class="card-title">KozyCare · building with my wife</div>
-      <div class="card-sub">Effortless rest for the ones who never stop. That's the idea behind KozyCare. My wife is building a sleep brand for people who live at full intensity. I'm building the infrastructure underneath it, so she can focus entirely on the product and the people it's for.</div>
-      <a href="https://kozycare.lovable.app" target="_blank" class="badge" style="background:var(--amber-bg);color:var(--amber-text);text-decoration:none;margin-top:.75rem;display:inline-block">kozycare.lovable.app ↗</a>
-    </div>
-
   </div>
 </section>
 
@@ -234,10 +250,15 @@ footer p{font-size:13px;color:var(--subtle)}
     </div>
   </div>
 </section>
+
+<hr class="div">
+
+<footer id="contact">
   <p>Paris, France · <a href="mailto:louisdevitry@gmail.com" style="color:var(--muted);text-decoration:none">louisdevitry@gmail.com</a></p>
   <div class="footer-links">
     <a href="https://linkedin.com/in/louis-de-vitry" target="_blank">LinkedIn</a>
     <a href="https://github.com/devitrylouis" target="_blank">GitHub</a>
+    <a href="https://louisdevitry.substack.com" target="_blank">Substack</a>
     <a href="https://www.kanop.io" target="_blank">Kanop</a>
   </div>
 </footer>
