@@ -116,6 +116,18 @@ footer p{font-size:13px;color:var(--subtle)}
 .footer-links{display:flex;gap:1.25rem}
 .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
 .footer-links a:hover{color:var(--text)}
+.series-intro{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
+.series-list{list-style:none}
+.series-item{display:flex;gap:14px;padding:.75rem 0;border-bottom:0.5px solid var(--border)}
+.series-item:first-child{border-top:0.5px solid var(--border)}
+.series-num{font-size:13px;color:var(--subtle);min-width:18px;padding-top:1px}
+.series-title{font-size:15px;font-weight:500;color:var(--text);text-decoration:none;transition:color .15s}
+.series-title:hover{color:var(--teal)}
+.series-sub{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.5}
+.series-subscribe{font-size:13px;color:var(--teal);text-decoration:none;display:inline-block;margin-top:1.25rem}
+.series-subscribe:hover{text-decoration:underline}
+.card-internal-link{font-size:13px;color:var(--teal);text-decoration:none;display:block;margin-top:.75rem}
+.card-internal-link:hover{text-decoration:underline}
 @media(max-width:520px){
   h1{font-size:32px}
   nav{padding:0 1rem}
@@ -160,13 +172,39 @@ footer p{font-size:13px;color:var(--subtle)}
 <hr class="div">
 
 <section id="writing">
-  <p class="section-label">Latest writing</p>
-  <a href="https://louisdevitry.substack.com/p/the-personal-ai-im-not-willing-to" target="_blank" class="featured-post">
-    <div class="post-eyebrow">Substack · First post</div>
-    <div class="post-title">The personal AI I'm not willing to outsource</div>
-    <div class="post-sub">Before I automate parts of my life, I want to know what I'm handing over — so I'm building it myself.</div>
-    <span class="post-cta">Read on Substack ↗</span>
-  </a>
+  <p class="section-label">Intendant — build in public</p>
+  <p class="series-intro">I'm building a personal AI agent in public. Every design decision, written up as I make it.</p>
+  <ul class="series-list">
+    <li class="series-item">
+      <span class="series-num">01</span>
+      <div>
+        <a href="https://louisdevitry.substack.com/p/the-personal-ai-im-not-willing-to" target="_blank" class="series-title">The personal AI I'm not willing to outsource</a>
+        <div class="series-sub">Before I automate parts of my life, I want to know what I'm handing over.</div>
+      </div>
+    </li>
+    <li class="series-item">
+      <span class="series-num">02</span>
+      <div>
+        <a href="https://louisdevitry.substack.com/p/2-building-a-personal-ai-agent-i" target="_blank" class="series-title">Building a personal AI agent I actually trust</a>
+        <div class="series-sub">Envelopes, middleware, and why infrastructure comes before intelligence.</div>
+      </div>
+    </li>
+    <li class="series-item">
+      <span class="series-num">03</span>
+      <div>
+        <a href="https://louisdevitry.substack.com/p/3-before-the-agent-acts-something" target="_blank" class="series-title">Before the agent acts, something decides what it acts on</a>
+        <div class="series-sub">On queues, priority, and the design decision I almost got wrong.</div>
+      </div>
+    </li>
+    <li class="series-item">
+      <span class="series-num">04</span>
+      <div>
+        <a href="https://louisdevitry.substack.com/p/4-before-the-agent-gets-memory-it" target="_blank" class="series-title">Before the agent gets memory, it needs accountability</a>
+        <div class="series-sub">Why the first store layer is about trust, not personalization.</div>
+      </div>
+    </li>
+  </ul>
+  <a href="https://louisdevitry.substack.com" target="_blank" class="series-subscribe">Subscribe on Substack ↗</a>
 </section>
 
 <hr class="div">
@@ -178,6 +216,7 @@ footer p{font-size:13px;color:var(--subtle)}
       <div class="card-accent" style="background:var(--teal)"></div>
       <div class="card-title">A personal operating system</div>
       <div class="card-sub">An autonomous agent that runs the operational layer of my life: emails, meetings, relationships, logistics, without being asked. It works while I sleep, flags what actually needs me, and handles everything else. The goal isn't productivity. It's a different relationship with time.</div>
+      <a href="#writing" class="card-internal-link">I'm building this in public →</a>
     </div>
     <div class="card">
       <div class="card-accent" style="background:var(--amber)"></div>
