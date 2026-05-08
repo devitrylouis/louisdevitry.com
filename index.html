@@ -1,306 +1,2663 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Louis de Vitry</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Louis de Vitry — Founder. Builder.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#FAFAF8;--bg2:#F2F0EB;--text:#1A1A18;--muted:#6B6B67;--subtle:#9A9A96;
-  --teal:#1D9E75;--teal-bg:#E1F5EE;--teal-text:#085041;
-  --blue:#378ADD;--blue-bg:#E6F1FB;--blue-text:#0C447C;
-  --amber:#BA7517;--amber-bg:#FAEEDA;--amber-text:#633806;
-  --border:rgba(0,0,0,0.1);
-}
-@media(prefers-color-scheme:dark){
-  :root{
-    --bg:#1A1A18;--bg2:#242420;--text:#F0EEE8;--muted:#9A9A96;--subtle:#6B6B67;
-    --teal-bg:#04342C;--teal-text:#9FE1CB;
-    --blue-bg:#042C53;--blue-text:#B5D4F4;
-    --amber-bg:#412402;--amber-text:#FAC775;
-    --border:rgba(255,255,255,0.1);
+  /* ---------- Tokens ---------- */
+  :root {
+    /* Warm paper palette with a moss accent — technical but grounded. */
+    --paper:        #F3EEE5;
+    --paper-2:      #EAE3D5;
+    --ink:          #1E1C17;
+    --ink-2:        #2B2822;
+    --muted:        #6E675A;
+    --muted-2:      #938A78;
+    --rule:         rgba(30,28,23,0.14);
+    --rule-strong:  rgba(30,28,23,0.32);
+    --accent:       #3A5A3A;   /* forest moss */
+    --accent-ink:   #F3EEE5;
+    --highlight:    #E7DDC6;
+    --warn:         #B4551E;
+    --good:         #3A5A3A;
+
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+
+    --gap: 24px;
+    --col: 1fr;
+    --max: 1180px;
   }
-}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  background:var(--bg);color:var(--text);
-  font-size:16px;line-height:1.7;
-}
-nav{
-  position:sticky;top:0;z-index:100;
-  background:var(--bg);border-bottom:0.5px solid var(--border);
-  padding:0 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  height:52px;
-}
-.nav-logo{font-size:15px;font-weight:500;letter-spacing:-0.01em}
-.nav-links{display:flex;gap:1.5rem}
-.nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .15s}
-.nav-links a:hover{color:var(--text)}
-.hero{max-width:760px;margin:0 auto;padding:5rem 2rem 4rem}
-.eyebrow{
-  font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--subtle);margin-bottom:1.25rem;
-  display:flex;align-items:center;gap:8px;
-}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--teal)}
-h1{
-  font-size:clamp(36px,6vw,54px);font-weight:400;
-  letter-spacing:-.03em;line-height:1.1;
-  color:var(--text);margin-bottom:1.5rem;
-}
-h1 em{font-style:normal;color:var(--muted)}
-.hero-sub{
-  font-size:18px;color:var(--muted);line-height:1.7;
-  max-width:560px;margin-bottom:2.5rem;
-}
-.cta-row{display:flex;gap:10px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:14px;font-weight:500;padding:9px 18px;
-  border-radius:8px;text-decoration:none;transition:opacity .15s;
-}
-.btn-primary{background:var(--text);color:var(--bg)}
-.btn-primary:hover{opacity:.85}
-.btn-ghost{border:0.5px solid var(--border);color:var(--text);background:transparent}
-.btn-ghost:hover{background:var(--bg2)}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4rem}
-.tag{font-size:12px;padding:4px 12px;border-radius:100px;border:0.5px solid var(--border);color:var(--muted)}
-section{max-width:760px;margin:0 auto;padding:3rem 2rem}
-.section-label{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--subtle);margin-bottom:1.75rem;
-}
-hr.div{border:none;border-top:0.5px solid var(--border);max-width:760px;margin:0 auto}
-.card-grid{display:grid;gap:12px}
-.card{
-  background:var(--bg2);border:0.5px solid var(--border);
-  border-radius:12px;padding:1.25rem 1.5rem;
-}
-.card-accent{width:24px;height:3px;border-radius:2px;margin-bottom:.75rem}
-.card-title{font-size:15px;font-weight:500;margin-bottom:.4rem}
-.card-sub{font-size:13px;color:var(--muted);line-height:1.6}
-.featured-post{
-  display:block;text-decoration:none;
-  background:var(--bg2);border:0.5px solid var(--border);
-  border-radius:12px;padding:1.5rem;
-  transition:border-color .15s;
-}
-.featured-post:hover{border-color:var(--text)}
-.post-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);margin-bottom:.6rem}
-.post-title{font-size:18px;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:.5rem}
-.post-sub{font-size:14px;color:var(--muted);line-height:1.6}
-.post-cta{font-size:13px;color:var(--teal);margin-top:.75rem;display:block}
-.work-item{
-  display:grid;grid-template-columns:3px 1fr;gap:0 16px;
-  padding:1.25rem 0;border-bottom:0.5px solid var(--border);
-}
-.work-item:first-child{border-top:0.5px solid var(--border)}
-.work-bar{width:3px;border-radius:2px;margin-top:4px}
-.work-title{font-size:15px;font-weight:500}
-.work-role{font-size:13px;color:var(--muted);margin-top:2px}
-.work-desc{font-size:14px;color:var(--muted);margin-top:.5rem;line-height:1.6}
-.badge{
-  display:inline-block;font-size:11px;padding:3px 9px;
-  border-radius:100px;font-weight:500;margin-top:.5rem;
-}
-footer{
-  max-width:760px;margin:0 auto;
-  padding:2rem 2rem 3rem;
-  border-top:0.5px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1rem;
-}
-footer p{font-size:13px;color:var(--subtle)}
-.footer-links{display:flex;gap:1.25rem}
-.footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
-.footer-links a:hover{color:var(--text)}
-.series-intro{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
-.series-list{list-style:none}
-.series-item{display:flex;gap:14px;padding:.75rem 0;border-bottom:0.5px solid var(--border)}
-.series-item:first-child{border-top:0.5px solid var(--border)}
-.series-num{font-size:13px;color:var(--subtle);min-width:18px;padding-top:1px}
-.series-title{font-size:15px;font-weight:500;color:var(--text);text-decoration:none;transition:color .15s}
-.series-title:hover{color:var(--teal)}
-.series-sub{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.5}
-.series-subscribe{font-size:13px;color:var(--teal);text-decoration:none;display:inline-block;margin-top:1.25rem}
-.series-subscribe:hover{text-decoration:underline}
-.card-internal-link{font-size:13px;color:var(--teal);text-decoration:none;display:block;margin-top:.75rem}
-.card-internal-link:hover{text-decoration:underline}
-@media(max-width:520px){
-  h1{font-size:32px}
-  nav{padding:0 1rem}
-  section,.hero{padding-left:1rem;padding-right:1rem}
-}
+
+  [data-theme="dark"] {
+    --paper: #121110;
+    --paper-2: #191816;
+    --ink:   #ECE5D6;
+    --ink-2: #D8D0BF;
+    --muted: #8E8878;
+    --muted-2: #6C6759;
+    --rule: rgba(236,229,214,0.12);
+    --rule-strong: rgba(236,229,214,0.28);
+    --highlight: #242218;
+    --accent: #98C07E;
+    --accent-ink: #121110;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.55;
+    font-feature-settings: "ss01","ss02","cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+
+  a { color: inherit; text-decoration: none; }
+  a.u { border-bottom: 1px solid var(--rule-strong); padding-bottom: 1px; transition: border-color .2s, color .2s; }
+  a.u:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- Grain ---------- */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    opacity: .35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  [data-theme="dark"] .grain { mix-blend-mode: screen; opacity: .22; }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  .rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+  .rule.thick { border-top: 1px solid var(--rule-strong); }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in oklab, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar .inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+  .brand .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent); }
+    50%     { box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 10%, transparent); }
+  }
+  .nav { display: flex; gap: 22px; font-size: 12px; color: var(--muted); }
+  .nav a { letter-spacing: .03em; }
+  .nav a:hover { color: var(--ink); }
+  .nav .sep { opacity: .4; }
+  .meta { font-size: 11px; color: var(--muted); letter-spacing: .04em; display: flex; gap: 14px; align-items: center; }
+  .meta .live::before {
+    content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); margin-right: 6px; vertical-align: middle;
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 72px 0 48px;
+    display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px;
+    align-items: stretch;
+  }
+  .hero .kicker {
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 28px;
+    display: flex; gap: 18px; align-items: center;
+  }
+  .hero .kicker .chip {
+    border: 1px solid var(--rule-strong); padding: 4px 8px; border-radius: 999px;
+    font-size: 10px; letter-spacing: .08em;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(56px, 9vw, 124px);
+    line-height: .92;
+    letter-spacing: -0.02em;
+    margin: 0;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144;
+  }
+  .hero .lede {
+    font-family: var(--serif);
+    font-size: 20px; line-height: 1.45;
+    color: var(--ink-2);
+    max-width: 48ch;
+    margin: 32px 0 0;
+    font-weight: 400;
+  }
+  .hero .lede .hi {
+    background: linear-gradient(180deg, transparent 62%, color-mix(in oklab, var(--accent) 28%, transparent) 62%);
+    padding: 0 2px;
+  }
+  .hero .cta {
+    margin-top: 40px;
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .02em;
+    border: 1px solid var(--rule-strong);
+    padding: 10px 14px;
+    border-radius: 2px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .2s, color .2s, border-color .2s, transform .2s;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn.primary:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn .arr { display: inline-block; transition: transform .2s; }
+  .btn:hover .arr { transform: translate(2px,-2px); }
+
+  .tags {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 2px 24px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .04em;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    max-width: 540px;
+  }
+  .tags span { padding: 2px 0; }
+  .tags span::before { content: "· "; color: var(--muted-2); }
+
+  /* ---------- Hero visual: input imagery → output products ---------- */
+  .stack {
+    position: relative;
+    border: 1px solid var(--rule-strong);
+    background: var(--paper-2);
+    border-radius: 2px;
+    overflow: hidden;
+    min-height: 540px;
+    display: flex; flex-direction: column;
+    font-size: 10px;
+  }
+  .stack .s-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; border-bottom: 1px solid var(--rule);
+    letter-spacing: .1em; color: var(--muted); text-transform: uppercase;
+  }
+  .stack .s-bar .dots { display: flex; gap: 4px; }
+  .stack .s-bar .dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--rule-strong); }
+  .stack .s-bar .dots span:first-child { background: var(--accent); animation: pulse 2.6s ease-in-out infinite; }
+
+  /* Main grid: inputs | fusion | outputs.
+     Fusion column is intentionally wide so the beams + glyph have proper
+     presence and the tile columns compress toward the edges — keeps the
+     card from feeling hollow in the middle. */
+  .flow {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 180px minmax(0, 1fr);
+    gap: 0;
+    padding: 20px 18px;
+    align-items: stretch;
+  }
+  .col-label {
+    font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 10px;
+    display: flex; align-items: baseline;
+  }
+  .col-label .n { color: var(--muted-2); font-variant-numeric: tabular-nums; }
+  /* Align SENSORS / PRODUCTS labels with the tile column on their side.
+     Tile column is 56px wide, gap is 10px. Label should sit centered over
+     the tile column, which means the label's x-range is [0..56px] on the
+     input side and [right 0 .. right 56px] on the output side. */
+  .col-in  .col-label { justify-content: flex-start; padding-left: 8px; }
+  .col-out .col-label { justify-content: flex-end;  padding-right: 8px; }
+
+  /* Tile block — a labeled imagery thumbnail */
+  .tile-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  /* Output column has fewer rows than inputs (4 vs 5) — vertically center
+     the tile stack in BOTH columns relative to the full flow height so they
+     align with the model glyph at the middle. col-label stays pinned to the
+     top via grid. */
+  .col-in, .col-out {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  .col-in .tile-row,
+  .col-out .tile-row {
+    align-self: center;
+  }
+  .tile-block {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 6px;
+    align-items: center;
+    opacity: .6;
+    transition: opacity .4s;
+  }
+  .tile-block.active { opacity: 1; }
+  .tile-block .t-label {
+    font-size: 10px; color: var(--ink); line-height: 1.15;
+    font-weight: 500;
+  }
+  .tile-block .t-kind {
+    font-size: 9px; letter-spacing: .08em; color: var(--muted);
+    text-transform: uppercase; margin-top: 2px;
+  }
+  /* Light mask behind label text so dashed beams don't cut through readability.
+     The wrapper sits above the SVG beam layer. We want the mask to be felt,
+     not seen — just enough paper-tint around the glyphs to break the dashed
+     line visually. */
+  .tile-block .t-label-wrap {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    padding: 1px 3px;
+    margin: -1px -3px;
+    background: color-mix(in oklab, var(--paper) 55%, transparent);
+    border-radius: 0;
+  }
+  .tile-block.out .t-label-wrap { text-align: right; }
+  .tile-block.active .t-kind { color: var(--accent); }
+  .tile {
+    width: 56px; height: 56px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .4s, box-shadow .4s;
+    background: var(--paper-2);
+  }
+  .tile svg { width: 100%; height: 100%; display: block; }
+  .tile-block.active .tile {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 40%, transparent);
+  }
+  /* Scan sweep on active tile */
+  .tile .scan {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--accent) 55%, transparent), transparent);
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .tile-block.active .tile .scan { opacity: 1; animation: tileScan 2.2s linear infinite; }
+  @keyframes tileScan { 0%{transform:translateX(-100%);} 100%{transform:translateX(120%);} }
+
+  /* Right-facing tag on output tiles */
+  .tile-block.out { grid-template-columns: 1fr 56px; }
+
+  /* --- Input/output textures are rendered inline as SVG, see JS --- */
+
+  /* Fusion column */
+  .fusion {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 0;
+  }
+  /* Living glyph — organic, cosmogram-style representation of intelligence.
+     No literal dot. Overlapping circles (seed-of-life) slowly rotate, petals
+     breathe, and a soft nucleus field glows — a pattern, not a pixel. */
+  .fusion-core {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px; height: 88px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .fusion-core .glyph {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    overflow: visible;
+  }
+  .fusion-core .glyph .ring-outer {
+    fill: none;
+    stroke: color-mix(in oklab, var(--accent) 30%, transparent);
+    stroke-width: 0.6;
+    vector-effect: non-scaling-stroke;
+  }
+  .fusion-core .glyph .petal {
+    fill: none;
+    stroke: color-mix(in oklab, var(--accent) 65%, transparent);
+    stroke-width: 0.9;
+    vector-effect: non-scaling-stroke;
+    transform-origin: 50px 50px;
+    animation: petalBreath 6s ease-in-out infinite;
+    opacity: .9;
+  }
+  .fusion-core .glyph .petals {
+    transform-origin: 50px 50px;
+    animation: glyphSpin 42s linear infinite;
+  }
+  .fusion-core .glyph .petal:nth-child(1) { animation-delay: -0.0s; }
+  .fusion-core .glyph .petal:nth-child(2) { animation-delay: -0.5s; }
+  .fusion-core .glyph .petal:nth-child(3) { animation-delay: -1.0s; }
+  .fusion-core .glyph .petal:nth-child(4) { animation-delay: -1.5s; }
+  .fusion-core .glyph .petal:nth-child(5) { animation-delay: -2.0s; }
+  .fusion-core .glyph .petal:nth-child(6) { animation-delay: -2.5s; }
+  .fusion-core .glyph .nucleus {
+    fill: color-mix(in oklab, var(--accent) 85%, transparent);
+    filter: blur(0.4px);
+    transform-origin: 50px 50px;
+    animation: nucleusBreath 4s ease-in-out infinite;
+  }
+  .fusion-core .glyph .halo {
+    fill: none;
+    stroke: color-mix(in oklab, var(--accent) 50%, transparent);
+    stroke-width: 0.5;
+    vector-effect: non-scaling-stroke;
+    transform-origin: 50px 50px;
+    animation: haloRev 28s linear infinite reverse;
+    stroke-dasharray: 1.4 3.2;
+  }
+  @keyframes glyphSpin { to { transform: rotate(360deg); } }
+  @keyframes haloRev   { to { transform: rotate(-360deg); } }
+  @keyframes petalBreath {
+    0%,100% { transform: scale(1);    opacity: .7; }
+    50%     { transform: scale(1.035); opacity: 1;  }
+  }
+  @keyframes nucleusBreath {
+    0%,100% { transform: scale(1);   opacity: .55; }
+    50%     { transform: scale(1.25); opacity: .95; }
+  }
+  .fusion-label {
+    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    display: none;
+  }
+
+  /* SVG beams connecting inputs → core → outputs.
+     The <svg> fills the entire .flow container and uses pixel coordinates
+     (no viewBox) so path `d` values are just DOM-measured pixel offsets. */
+  .flow { position: relative; }
+  .beams {
+    position: absolute; inset: 0; pointer-events: none;
+    width: 100%; height: 100%;
+    overflow: visible;
+    z-index: 1;
+  }
+  .beam {
+    stroke: color-mix(in oklab, var(--accent) 75%, transparent);
+    stroke-width: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-dasharray: 2 4;
+    opacity: .22;
+    transition: opacity .3s, stroke-width .3s;
+    vector-effect: non-scaling-stroke;
+  }
+  .beam.on { opacity: .95; stroke-width: 1.5; animation: beamFlow .6s linear infinite; }
+  @keyframes beamFlow {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: -12; }
+  }
+
+  /* Core burst ring */
+  .fusion-core .burst-ring {
+    position: absolute; top: 50%; left: 50%;
+    width: 20px; height: 20px;
+    border: 2px solid color-mix(in oklab, var(--accent) 70%, transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .fusion-core.burst .burst-ring {
+    animation: burstRing .6s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes burstRing {
+    0%   { opacity: 0;   transform: translate(-50%,-50%) scale(0.6); }
+    30%  { opacity: .9;  }
+    100% { opacity: 0;   transform: translate(-50%,-50%) scale(2.6); }
+  }
+
+  /* Output product values row */
+  .prod-values {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+    padding: 0 18px 14px;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    margin-top: 0;
+  }
+  .prod-value {
+    text-align: left;
+    transition: opacity .4s;
+    opacity: .5;
+  }
+  .prod-value.lit { opacity: 1; }
+  .prod-value .pname { font-size: 9px; letter-spacing: .12em; color: var(--muted-2); text-transform: uppercase; margin-bottom: 4px; }
+  .prod-value.lit .pname { color: var(--accent); }
+  .prod-value .pval {
+    font-family: var(--mono);
+    font-size: 20px; color: var(--ink);
+    font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .prod-value .punit { font-size: 10px; color: var(--muted); margin-left: 2px; }
+  .prod-value .psub { font-size: 9px; color: var(--muted); margin-top: 3px; letter-spacing: .04em; }
+
+  /* Footer strip */
+  .s-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--rule);
+    padding: 8px 14px;
+    font-size: 9px; letter-spacing: .1em; color: var(--muted-2); text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .s-foot .aoi { color: var(--muted); }
+  .s-foot .year {
+    color: var(--ink); font-weight: 500;
+    padding: 2px 6px; border: 1px solid var(--rule-strong); border-radius: 1px;
+  }
+
+  /* ---------- Section ---------- */
+  section { padding: 88px 0; }
+  .sec-head {
+    display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: baseline;
+    margin-bottom: 40px;
+  }
+  .sec-head .num {
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+    padding-top: 8px;
+  }
+  .sec-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4.2vw, 52px);
+    letter-spacing: -0.015em;
+    line-height: 1;
+    margin: 0;
+    font-variation-settings: "opsz" 120;
+  }
+  .sec-head h2 em { font-style: italic; color: var(--accent); }
+
+  /* ---------- Cards: what I'm building ---------- */
+  .projects {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .card {
+    border: 1px solid var(--rule-strong);
+    background: var(--paper-2);
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+    min-height: 320px;
+    display: flex; flex-direction: column;
+    transition: transform .25s ease, border-color .25s;
+  }
+  .card:hover { border-color: var(--ink); }
+  .card .card-kicker {
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 18px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .card .card-kicker .status {
+    display: inline-flex; align-items: center; gap: 6px; color: var(--accent);
+  }
+  .card .card-kicker .status::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  .card h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 28px; line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  .card p { color: var(--ink-2); margin: 0 0 18px; font-size: 13px; line-height: 1.6; max-width: 52ch; }
+  .card .link { margin-top: auto; font-size: 12px; color: var(--muted); }
+  .card .link a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+  .card .link a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* Agent visual */
+  .agent-widget {
+    margin-top: 8px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    border-radius: 2px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  /* Kanop workflow widget (used on the Kanop card) */
+  .kn-workflow {
+    margin-top: 8px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    border-radius: 2px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    font-size: 11px;
+    line-height: 1.5;
+    display: flex; flex-direction: column;
+  }
+  .kn-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 9px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .kn-head .kn-prj {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--ink-2);
+    font-family: var(--mono);
+    letter-spacing: .04em;
+    font-size: 9px;
+    text-transform: none;
+  }
+  .kn-head .kn-prj i {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 20%, transparent);
+    animation: knBlink 1.4s ease-in-out infinite;
+  }
+  @keyframes knBlink { 0%,100%{opacity:.5;} 50%{opacity:1;} }
+
+  .kn-stepper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+    padding: 12px 14px 10px;
+    border-bottom: 1px dashed var(--rule);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .kn-stepper::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: calc(16.66% + 6px);
+    right: calc(16.66% + 6px);
+    height: 1px;
+    background: var(--rule);
+  }
+  .kn-progress {
+    position: absolute;
+    top: 17px;
+    left: calc(16.66% + 6px);
+    height: 1px;
+    background: var(--accent);
+    width: 0;
+    transition: width .8s cubic-bezier(.4,.0,.2,1);
+    z-index: 0;
+  }
+  .kn-step {
+    display: flex; flex-direction: column;
+    align-items: center;
+    font-family: var(--mono);
+    color: var(--muted-2);
+    position: relative;
+    z-index: 1;
+    transition: color .35s ease;
+  }
+  .kn-step.done { color: var(--muted); }
+  .kn-step.active { color: var(--ink); }
+  .kn-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    border: 1px solid var(--rule-strong);
+    background: var(--paper);
+    margin-bottom: 6px;
+    transition: background .35s ease, box-shadow .35s ease, border-color .35s ease, transform .35s ease;
+  }
+  .kn-step.done .kn-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .kn-step.active .kn-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 18%, transparent);
+    transform: scale(1.05);
+  }
+  .kn-step-num {
+    font-size: 8.5px;
+    letter-spacing: .1em;
+    color: var(--muted-2);
+    margin-bottom: 1px;
+  }
+  .kn-step.active .kn-step-num,
+  .kn-step.done .kn-step-num { color: var(--accent); }
+  .kn-step-name {
+    font-size: 10px;
+    letter-spacing: .02em;
+    color: inherit;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .kn-step.active .kn-step-name { font-weight: 500; }
+
+  .kn-stage {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .kn-panel {
+    position: absolute;
+    inset: 0;
+    padding: 10px 14px 12px;
+    opacity: 0;
+    transition: opacity .35s ease;
+    display: flex; flex-direction: column;
+    font-size: 10.5px;
+  }
+  .kn-panel.in { opacity: 1; }
+  .kn-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .04em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+  .kn-sub b { color: var(--ink-2); font-weight: 500; }
+  .kn-foot {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .04em;
+    color: var(--muted);
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: knFadeIn .4s 1.6s ease forwards;
+  }
+  .kn-foot b { color: var(--accent); font-weight: 500; font-size: 10px; }
+  @keyframes knFadeIn { to { opacity: 1; } }
+
+  /* Eligibility matrix */
+  .kn-elig {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr .9fr 1.1fr;
+    font-family: var(--mono);
+    font-size: 10px;
+    row-gap: 3px;
+    column-gap: 8px;
+    flex: 1;
+    align-content: start;
+  }
+  .kn-elig-h {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted-2);
+    text-align: center;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.2;
+  }
+  .kn-elig-h:first-child { text-align: left; }
+  .kn-elig-row {
+    color: var(--ink-2);
+    font-size: 10px;
+    padding: 1px 0;
+    align-self: center;
+  }
+  .kn-elig-cell {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted-2);
+    align-self: center;
+    opacity: 0;
+    animation: knCellIn .25s ease forwards;
+  }
+  .kn-elig-cell.pass { color: var(--accent); }
+  .kn-elig-cell.warn { color: var(--warn); }
+  .kn-elig-foot {
+    border-top: 1px solid var(--rule);
+    padding-top: 5px;
+    margin-top: 3px;
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--muted);
+    opacity: 0;
+    animation: knCellIn .3s ease forwards;
+  }
+  .kn-elig-foot:first-child { text-align: left; }
+  .kn-elig-foot.pass { color: var(--accent); }
+  .kn-elig-foot.warn { color: var(--warn); }
+  .kn-elig-score {
+    font-size: 8.5px;
+    color: var(--muted-2);
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 1px;
+  }
+  @keyframes knCellIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Chart shared */
+  .kn-chart-wrap {
+    flex: 1;
+    position: relative;
+    min-height: 0;
+  }
+  .kn-chart {
+    width: 100%; height: 100%;
+    overflow: visible;
+    font-family: var(--mono);
+  }
+  .kn-chart text {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    fill: var(--muted-2);
+    letter-spacing: .04em;
+  }
+  .kn-chart .kn-axis {
+    stroke: var(--rule);
+    stroke-width: 1;
+    fill: none;
+  }
+  .kn-chart .kn-grid {
+    stroke: var(--rule);
+    stroke-width: .5;
+    stroke-dasharray: 1 3;
+    fill: none;
+  }
+  .kn-chart .kn-data {
+    clip-path: inset(0 100% 0 0);
+    animation: knReveal 1.6s .25s cubic-bezier(.45,.0,.2,1) forwards;
+  }
+  @keyframes knReveal { to { clip-path: inset(0 0% 0 0); } }
+
+  /* Baseline panel */
+  .kn-baseline-line {
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .kn-baseline-line.proj { stroke: var(--accent); }
+  .kn-baseline-line.bau {
+    stroke: var(--muted-2);
+    stroke-width: 1.2;
+    stroke-dasharray: 3 2.5;
+  }
+  .kn-baseline-area {
+    fill: var(--accent);
+    opacity: .12;
+  }
+  .kn-baseline-dot {
+    fill: var(--paper);
+    stroke: var(--accent);
+    stroke-width: 1.4;
+  }
+  .kn-baseline-label {
+    font-size: 7.5px;
+    letter-spacing: .04em;
+  }
+  .kn-baseline-label.proj { fill: var(--accent); font-weight: 500; }
+  .kn-baseline-label.bau { fill: var(--muted); }
+
+  /* Crediting panel */
+  .kn-bar { fill: var(--accent); }
+  .kn-bar.verified { fill: var(--accent); }
+  .kn-bar.projected {
+    fill: var(--accent);
+    opacity: .35;
+  }
+  .kn-cum {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1;
+    stroke-dasharray: 2.5 2;
+    opacity: .55;
+  }
+  .kn-credit-tick { fill: var(--muted-2); font-size: 7px; }
+  .kn-legend {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-right: 12px;
+    color: var(--muted);
+  }
+  .kn-legend i {
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 1px;
+  }
+  .kn-legend i.verified { background: var(--accent); }
+  .kn-legend i.projected { background: color-mix(in oklab, var(--accent) 35%, transparent); border: 1px dashed color-mix(in oklab, var(--accent) 50%, transparent); }
+  .kn-legend i.cum {
+    width: 14px; height: 1px;
+    border: 0;
+    background: var(--ink);
+    opacity: .55;
+  }
+  .agent-widget .agent-head {
+    display: flex; justify-content: space-between; padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 9px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase;
+  }
+  .agent-log {
+    padding: 8px 10px;
+    font-family: var(--mono);
+    height: calc(100% - 26px);
+    overflow: hidden;
+    position: relative;
+  }
+  .agent-log .line {
+    display: grid; grid-template-columns: 54px 14px 1fr; gap: 8px;
+    color: var(--ink-2);
+    animation: rise .4s ease both;
+    margin-bottom: 2px;
+  }
+  .agent-log .line .t { color: var(--muted-2); font-size: 10px; }
+  .agent-log .line .i {
+    color: var(--accent); font-weight: 600;
+  }
+  .agent-log .line.err .i { color: var(--warn); }
+  .agent-log .line .m { font-size: 11px; }
+  .agent-log .line .m b { color: var(--ink); font-weight: 500; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- Kozy visual — embers / radiating warmth ----------
+     Abstract: a slow-breathing warm sun at the base, concentric ring ripples,
+     drifting ember specks rising. No bed, no temperatures. Warm, candlelit,
+     intimate. Reads as heat-from-within. */
+  .kozy-visual {
+    margin-top: 8px;
+    border: 1px solid var(--rule);
+    background:
+      radial-gradient(ellipse 80% 90% at 50% 108%, #4A1E10 0%, #261108 40%, #140A06 100%);
+    border-radius: 2px;
+    height: 210px;
+    position: relative;
+    overflow: hidden;
+  }
+  [data-theme="dark"] .kozy-visual {
+    background:
+      radial-gradient(ellipse 80% 90% at 50% 108%, #5A2310 0%, #2A1308 40%, #0A0604 100%);
+  }
+  .kozy-head {
+    position: absolute; top: 0; left: 0; right: 0;
+    display: flex; justify-content: space-between;
+    padding: 10px 14px;
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    font-family: var(--mono);
+    color: rgba(240, 220, 190, .55);
+    z-index: 5;
+  }
+  .kozy-head .live {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: #F0B080;
+  }
+  .kozy-head .live i {
+    width: 5px; height: 5px; border-radius: 50%; background: currentColor;
+    box-shadow: 0 0 0 2px color-mix(in oklab, currentColor 22%, transparent);
+    animation: warmBlink 2s ease-in-out infinite;
+  }
+  @keyframes warmBlink {
+    0%,100% { opacity: .55; transform: scale(1); }
+    50%     { opacity: 1;   transform: scale(1.3); }
+  }
+
+  /* central warm "sun" radial source */
+  .kozy-sun {
+    position: absolute;
+    left: 50%; top: 72%;
+    transform: translate(-50%, -50%);
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle,
+        #FFD8A0 0%,
+        #F8A560 14%,
+        #E26830 32%,
+        rgba(200,70,30,.55) 48%,
+        rgba(120,40,20,.22) 65%,
+        transparent 78%);
+    filter: blur(1px);
+    mix-blend-mode: screen;
+    animation: sunBreath 6s ease-in-out infinite;
+  }
+  @keyframes sunBreath {
+    0%,100% { transform: translate(-50%,-50%) scale(.96); opacity: .9; }
+    50%     { transform: translate(-50%,-50%) scale(1.05); opacity: 1;  }
+  }
+
+  /* concentric ring ripples */
+  .kozy-ring {
+    position: absolute;
+    left: 50%; top: 72%;
+    width: 80px; height: 80px;
+    margin-left: -40px; margin-top: -40px;
+    border-radius: 50%;
+    border: 1px solid rgba(240, 160, 90, .55);
+    opacity: 0;
+    animation: ripple 7s ease-out infinite;
+    mix-blend-mode: screen;
+  }
+  .kozy-ring.r2 { animation-delay: -2.4s; }
+  .kozy-ring.r3 { animation-delay: -4.8s; }
+  @keyframes ripple {
+    0%   { transform: scale(.4);  opacity: 0;  border-color: rgba(255,200,140,.9); }
+    20%  { opacity: .7; }
+    100% { transform: scale(4.6); opacity: 0;  border-color: rgba(255,120,60,0); }
+  }
+
+  /* drifting ember specks */
+  .kozy-embers {
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+  .kozy-ember {
+    position: absolute;
+    width: 2.5px; height: 2.5px; border-radius: 50%;
+    background: #FFCB80;
+    box-shadow: 0 0 4px 1px rgba(255, 180, 100, .7);
+    opacity: 0;
+    animation: emberRise 6s ease-in infinite;
+  }
+  @keyframes emberRise {
+    0%   { transform: translate(0, 30px) scale(.6); opacity: 0; }
+    15%  { opacity: 1; }
+    70%  { opacity: .8; }
+    100% { transform: translate(var(--drift, -4px), -170px) scale(.3); opacity: 0; }
+  }
+
+  /* soft vignette edge so the card glows from its own center */
+  .kozy-visual::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 100% 100% at 50% 70%, transparent 35%, rgba(0,0,0,.35) 100%);
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* caption lockup — small serif line bottom-left */
+  .kozy-caption {
+    position: absolute;
+    left: 16px; bottom: 14px;
+    z-index: 6;
+    font-family: var(--serif);
+    font-size: 15px; line-height: 1.15;
+    color: #F5E6D0;
+    letter-spacing: -0.005em;
+    text-shadow: 0 1px 6px rgba(0,0,0,.55);
+    max-width: 92%;
+    text-wrap: balance;
+    white-space: nowrap;
+  }
+  .kozy-caption em {
+    font-style: italic;
+    color: #FFCB8A;
+    font-variation-settings: "opsz" 120;
+  }
+
+  /* ---------- Intendant feed ---------- */
+  .intendant {
+    display: grid; grid-template-columns: 1fr;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .post {
+    display: grid; grid-template-columns: 80px 1fr auto; gap: 32px;
+    padding: 28px 0; border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    transition: background .2s;
+    position: relative;
+  }
+  .post::before {
+    content: ""; position: absolute; left: -32px; right: -32px; top: 0; bottom: 0;
+    background: var(--highlight); opacity: 0; transition: opacity .2s;
+    z-index: -1;
+  }
+  .post:hover::before { opacity: .6; }
+  .post .n { color: var(--muted-2); font-size: 11px; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .post h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .post .dek { color: var(--muted); font-size: 12px; max-width: 62ch; }
+  .post .go {
+    color: var(--muted); font-size: 11px; letter-spacing: .06em;
+    opacity: 0; transform: translateX(-4px); transition: opacity .2s, transform .2s;
+  }
+  .post:hover .go { opacity: 1; transform: translateX(0); color: var(--accent); }
+  .intendant-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; font-size: 12px; color: var(--muted);
+  }
+
+  /* ---------- Experience ---------- */
+  .xp-row {
+    display: grid; grid-template-columns: 180px 1fr 180px; gap: 32px;
+    padding: 28px 0; border-top: 1px solid var(--rule);
+    position: relative;
+  }
+  .xp-row:last-child { border-bottom: 1px solid var(--rule); }
+  .xp-row .when { color: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+  .xp-row .where {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 24px; line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .xp-row .role { font-size: 12px; color: var(--muted); margin: 6px 0 10px; letter-spacing: .04em; }
+  .xp-row .desc { color: var(--ink-2); max-width: 62ch; font-size: 13px; line-height: 1.6; }
+  .xp-row .tagline { color: var(--muted); font-size: 11px; margin-top: 10px; letter-spacing: .04em; }
+  .xp-row .side { font-size: 11px; color: var(--muted); text-align: right; letter-spacing: .04em; }
+  .xp-row .side a:hover { color: var(--accent); }
+
+  /* ---------- Publications ---------- */
+  .pubs { display: grid; gap: 0; }
+  .pub {
+    display: grid; grid-template-columns: 100px 1fr auto; gap: 24px;
+    padding: 16px 0; border-top: 1px solid var(--rule);
+    font-size: 13px; line-height: 1.5;
+  }
+  .pub:last-child { border-bottom: 1px solid var(--rule); }
+  .pub .yr { color: var(--muted); letter-spacing: .06em; }
+  .pub .ven { color: var(--muted); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+  .pub .ttl { color: var(--ink); font-family: var(--serif); font-size: 17px; line-height: 1.3; }
+
+  /* ---------- Contact / footer ---------- */
+  .contact {
+    padding: 96px 0 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    border-top: 1px solid var(--rule-strong);
+    align-items: end;
+  }
+  .contact h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 76px);
+    letter-spacing: -0.02em;
+    line-height: .95;
+    margin: 0;
+  }
+  .contact h2 em { font-style: italic; color: var(--accent); }
+  .contact .right { display: flex; flex-direction: column; gap: 10px; font-size: 13px; align-items: flex-start; }
+  .contact .right a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
+  .contact .right a:hover { color: var(--accent); }
+  .contact .right a .arr { opacity: .5; }
+  .contact .right a:hover .arr { opacity: 1; }
+
+  footer.foot {
+    padding: 24px 0 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ---------- Portrait card ---------- */
+  .portrait {
+    border: 1px solid var(--rule-strong);
+    background: var(--paper-2);
+    aspect-ratio: 3/4;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait .placeholder {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 16px, color-mix(in oklab, var(--ink) 5%, transparent) 16px 17px),
+      var(--paper-2);
+  }
+  .portrait .tag {
+    position: absolute; top: 10px; left: 12px;
+    font-size: 10px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase;
+  }
+
+  /* ---------- Tweaks panel ---------- */
+  .tweaks {
+    position: fixed; right: 24px; bottom: 24px; z-index: 100;
+    background: var(--paper); border: 1px solid var(--rule-strong);
+    padding: 16px;
+    width: 260px;
+    font-size: 11px;
+    display: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,.08);
+    border-radius: 2px;
+  }
+  .tweaks.on { display: block; }
+  .tweaks h5 {
+    font-family: var(--mono); font-weight: 500; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--muted); margin: 0 0 12px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .tweaks .group { margin-bottom: 12px; }
+  .tweaks label { display: block; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+  .tweaks .pills { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tweaks .pill {
+    border: 1px solid var(--rule-strong); padding: 5px 8px; font-family: var(--mono); font-size: 10px;
+    background: transparent; color: var(--ink); cursor: pointer; border-radius: 2px;
+  }
+  .tweaks .pill.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .tweaks .sw { display: flex; gap: 6px; }
+  .tweaks .sw .s {
+    width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--rule-strong); cursor: pointer;
+  }
+  .tweaks .sw .s.on { box-shadow: 0 0 0 2px var(--ink); }
+
+  /* ---------- Data theme overrides ---------- */
+  [data-accent="moss"]   { --accent: #3A5A3A; }
+  [data-theme="dark"][data-accent="moss"] { --accent: #98C07E; }
+  [data-accent="clay"]   { --accent: #B4551E; }
+  [data-theme="dark"][data-accent="clay"] { --accent: #E08B5A; }
+  [data-accent="ink"]    { --accent: #1E1C17; }
+  [data-theme="dark"][data-accent="ink"]  { --accent: #ECE5D6; }
+  [data-accent="sky"]    { --accent: #3A5A78; }
+  [data-theme="dark"][data-accent="sky"]  { --accent: #8FB5D6; }
+
+  [data-type="mono"] { --serif: 'JetBrains Mono', ui-monospace, monospace; }
+  [data-type="mono"] .hero h1,
+  [data-type="mono"] .sec-head h2,
+  [data-type="mono"] .card h3,
+  [data-type="mono"] .post h4,
+  [data-type="mono"] .xp-row .where,
+  [data-type="mono"] .pub .ttl,
+  [data-type="mono"] .contact h2,
+  [data-type="mono"] .hero .lede {
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: -0.02em;
+  }
+  [data-type="mono"] .hero h1 em,
+  [data-type="mono"] .sec-head h2 em,
+  [data-type="mono"] .contact h2 em {
+    font-style: normal;
+  }
+
+  [data-density="compact"] section { padding: 64px 0; }
+  [data-density="compact"] .hero { padding: 48px 0 36px; }
+  [data-density="compact"] .card { padding: 22px; }
+  [data-density="compact"] .post { padding: 20px 0; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .sat { min-height: 360px; }
+    .sec-head { grid-template-columns: 1fr; gap: 8px; }
+    .projects { grid-template-columns: 1fr; }
+    .xp-row { grid-template-columns: 1fr; gap: 8px; }
+    .xp-row .side { text-align: left; }
+    .post { grid-template-columns: 48px 1fr; }
+    .post .go { display: none; }
+    .contact { grid-template-columns: 1fr; gap: 24px; }
+    .pub { grid-template-columns: 72px 1fr; }
+    .pub .ven { grid-column: 2; color: var(--muted); }
+    .tags { grid-template-columns: repeat(2, 1fr); }
+    .nav { display: none; }
+  }
 </style>
 </head>
 <body>
+<div class="grain"></div>
 
-<nav>
-  <span class="nav-logo">Louis de Vitry</span>
-  <div class="nav-links">
-    <a href="#building">Building</a>
-    <a href="#writing">Writing</a>
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
+<!-- ======================== TOPBAR ======================== -->
+<header class="topbar">
+  <div class="wrap inner">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Louis de Vitry</span>
+    </div>
+    <nav class="nav">
+      <a href="#building">Building</a>
+      <span class="sep">·</span>
+      <a href="#writing">Writing</a>
+      <span class="sep">·</span>
+      <a href="#work">Work</a>
+      <span class="sep">·</span>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="meta">
+      <span class="live" id="clock">Paris · 00:00</span>
+    </div>
   </div>
-</nav>
+</header>
 
-<div class="hero">
-  <div class="eyebrow"><span class="dot"></span>Paris · 2026</div>
-  <h1>Founder.<br><em>Builder.</em></h1>
-  <p class="hero-sub">Scaling Kanop, the geospatial intelligence partner for nature: AI and satellite data in service of forests, biodiversity and the people who depend on them. In parallel, I ship autonomous systems to make my life, life.</p>
-  <div class="cta-row">
-    <a href="https://www.kanop.io" class="btn btn-primary" target="_blank">Kanop.io ↗</a>
-    <a href="https://linkedin.com/in/louis-de-vitry" class="btn btn-ghost" target="_blank">LinkedIn</a>
-    <a href="https://github.com/devitrylouis" class="btn btn-ghost" target="_blank">GitHub</a>
+<!-- SVG sprite: shared gradient ramps for generated tiles -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Shared land-mask: same AOI footprint across every tile -->
+    <clipPath id="landMask" clipPathUnits="userSpaceOnUse">
+      <path d="M4,24 C6,14 14,8 22,10 C28,11 32,6 40,9 C48,12 54,18 52,28 C50,36 54,44 48,48 C42,52 32,50 26,52 C18,54 8,50 6,42 C4,36 2,32 4,24 Z"/>
+    </clipPath>
+    <clipPath id="riverMask" clipPathUnits="userSpaceOnUse">
+      <path d="M10,18 C18,22 22,26 26,30 C30,34 38,36 46,42" stroke="black" stroke-width="2" fill="none"/>
+    </clipPath>
+
+    <!-- Noise filters -->
+    <filter id="noiseFine" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.8" numOctaves="2" seed="5"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 2 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="noiseCoarse" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" seed="12"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 2 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="speckle" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="1" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.9  0 0 0 0 0.85  0 0 0 0 0.75  0 0 0 1.4 -0.2"/>
+    </filter>
+    <filter id="speckleL" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="8"/>
+      <feColorMatrix values="0 0 0 0 0.92  0 0 0 0 0.88  0 0 0 0 0.78  0 0 0 1.6 -0.3"/>
+    </filter>
+    <filter id="contours" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="2" seed="22"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 6 -2.8"/>
+    </filter>
+
+    <!-- Colour ramps via gradients -->
+    <linearGradient id="rampVeg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%"  stop-color="#2E5A30"/>
+      <stop offset="45%" stop-color="#4C7A3E"/>
+      <stop offset="75%" stop-color="#6E8E3E"/>
+      <stop offset="100%" stop-color="#3A5A2A"/>
+    </linearGradient>
+    <linearGradient id="rampVegWarm" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%"  stop-color="#3E5A2E"/>
+      <stop offset="50%" stop-color="#7A8248"/>
+      <stop offset="100%" stop-color="#8A6838"/>
+    </linearGradient>
+    <linearGradient id="rampSAR" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#E4DDC8"/>
+      <stop offset="60%" stop-color="#7A7260"/>
+      <stop offset="100%" stop-color="#2A2418"/>
+    </linearGradient>
+    <linearGradient id="rampDEM" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%"   stop-color="#1E4A2E"/>
+      <stop offset="25%"  stop-color="#5E8E4E"/>
+      <stop offset="55%"  stop-color="#C8B86C"/>
+      <stop offset="80%"  stop-color="#A86838"/>
+      <stop offset="100%" stop-color="#6E3A1E"/>
+    </linearGradient>
+    <linearGradient id="rampBio" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%"   stop-color="#0F3A20"/>
+      <stop offset="30%"  stop-color="#3E7A3C"/>
+      <stop offset="55%"  stop-color="#B8B04C"/>
+      <stop offset="80%"  stop-color="#D98A3C"/>
+      <stop offset="100%" stop-color="#8E3A1E"/>
+    </linearGradient>
+    <linearGradient id="rampHgt" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%"   stop-color="#F4EAD0"/>
+      <stop offset="40%"  stop-color="#8EB06E"/>
+      <stop offset="75%"  stop-color="#2E5A32"/>
+      <stop offset="100%" stop-color="#0F2A1A"/>
+    </linearGradient>
+
+  </defs>
+</svg>
+
+<!-- ======================== HERO ======================== -->
+<main class="wrap">
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="kicker">
+      <span>Paris · 2026</span>
+      <span class="chip">v4.0</span>
+    </div>
+    <h1>Founder.<br/><em>Builder.</em></h1>
+    <p class="lede">
+      Scaling <a href="https://www.kanop.io" target="_blank" rel="noopener" class="u"><span class="hi">Kanop</span></a>, the geospatial intelligence partner for nature — AI and satellite data in service of forests, biodiversity and the people who depend on them. In parallel, I ship autonomous systems to make my life, life.
+    </p>
+    <div class="cta">
+      <a href="https://www.kanop.io" target="_blank" rel="noopener" class="btn primary">
+        Kanop.io <span class="arr">↗</span>
+      </a>
+      <a href="https://louisdevitry.substack.com" target="_blank" rel="noopener" class="btn">
+        Read Intendant <span class="arr">↗</span>
+      </a>
+      <a href="#contact" class="btn">Get in touch</a>
+    </div>
+    <div class="tags">
+      <span>AI / ML</span>
+      <span>Computer vision</span>
+      <span>Autonomous agents</span>
+      <span>ClimateTech</span>
+      <span>Carbon markets</span>
+      <span>Satellite imagery</span>
+    </div>
   </div>
-</div>
 
-<div style="max-width:760px;margin:0 auto;padding:0 2rem 3rem">
-  <div class="tags">
-    <span class="tag">AI / ML</span>
-    <span class="tag">Computer vision</span>
-    <span class="tag">Autonomous agents</span>
-    <span class="tag">ClimateTech</span>
-    <span class="tag">Carbon markets</span>
-    <span class="tag">Satellite imagery</span>
+  <!-- Multi-sensor stack → annual estimates -->
+  <div class="stack" aria-hidden="true">
+    <div class="s-bar">
+      <span id="aoiLabel">AOI-0412 · Amazon Basin</span>
+      <span class="dots"><span></span><span></span><span></span></span>
+    </div>
+
+    <div class="flow">
+      <!-- Beams overlay spans the entire flow area; paths computed in JS from real tile/core positions -->
+      <svg class="beams" preserveAspectRatio="xMidYMid meet">
+        <path class="beam b-in b-s2"     data-from="s2"     data-dir="in"></path>
+        <path class="beam b-in b-ls"     data-from="ls"     data-dir="in"></path>
+        <path class="beam b-in b-s1"     data-from="s1"     data-dir="in"></path>
+        <path class="beam b-in b-palsar" data-from="palsar" data-dir="in"></path>
+        <path class="beam b-in b-dem"    data-from="dem"    data-dir="in"></path>
+        <path class="beam b-out b-bio"    data-to="biomass"      data-dir="out"></path>
+        <path class="beam b-out b-hgt"    data-to="height"       data-dir="out"></path>
+        <path class="beam b-out b-cancov" data-to="canopyCover"  data-dir="out"></path>
+        <path class="beam b-out b-cov"    data-to="cover"        data-dir="out"></path>
+      </svg>
+      <!-- INPUT COLUMN: satellite imagery tiles -->
+      <div class="col col-in">
+        <div class="col-label"><span>Sensors</span></div>
+        <div class="tile-row">
+          <div class="tile-block" data-layer="s2">
+            <div class="tile" data-tile="s2"></div>
+            <div class="t-label-wrap">
+              <div class="t-label">Sentinel-2</div>
+              <div class="t-kind">Optical</div>
+            </div>
+          </div>
+          <div class="tile-block" data-layer="ls">
+            <div class="tile" data-tile="ls"></div>
+            <div class="t-label-wrap">
+              <div class="t-label">Landsat</div>
+              <div class="t-kind">Optical</div>
+            </div>
+          </div>
+          <div class="tile-block" data-layer="s1">
+            <div class="tile" data-tile="s1"></div>
+            <div class="t-label-wrap">
+              <div class="t-label">Sentinel-1</div>
+              <div class="t-kind">SAR</div>
+            </div>
+          </div>
+          <div class="tile-block" data-layer="palsar">
+            <div class="tile" data-tile="palsar"></div>
+            <div class="t-label-wrap">
+              <div class="t-label">PALSAR</div>
+              <div class="t-kind">SAR</div>
+            </div>
+          </div>
+          <div class="tile-block" data-layer="dem">
+            <div class="tile" data-tile="dem"></div>
+            <div class="t-label-wrap">
+              <div class="t-label">DEM</div>
+              <div class="t-kind">Elevation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FUSION COLUMN -->
+      <div class="fusion">
+        <div class="fusion-core">
+          <svg class="glyph" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+            <!-- outer halo & outer ring -->
+            <circle class="halo" cx="50" cy="50" r="46"/>
+            <circle class="ring-outer" cx="50" cy="50" r="34"/>
+            <!-- six-petal seed-of-life: overlapping circles radially placed around center -->
+            <g class="petals">
+              <circle class="petal" cx="50" cy="32" r="18"/>
+              <circle class="petal" cx="65.59" cy="41" r="18"/>
+              <circle class="petal" cx="65.59" cy="59" r="18"/>
+              <circle class="petal" cx="50" cy="68" r="18"/>
+              <circle class="petal" cx="34.41" cy="59" r="18"/>
+              <circle class="petal" cx="34.41" cy="41" r="18"/>
+            </g>
+            <!-- soft breathing nucleus (no hard dot) -->
+            <circle class="nucleus" cx="50" cy="50" r="3.2"/>
+          </svg>
+          <div class="burst-ring"></div>
+        </div>
+        <div class="fusion-label">Fusion model</div>
+      </div>
+
+      <!-- OUTPUT COLUMN: product map tiles -->
+      <div class="col col-out">
+        <div class="col-label"><span>Products</span></div>
+        <div class="tile-row">
+          <div class="tile-block out" data-product="biomass">
+            <div class="t-label-wrap">
+              <div class="t-label">Biomass</div>
+              <div class="t-kind">t/ha</div>
+            </div>
+            <div class="tile" data-tile="bio"></div>
+          </div>
+          <div class="tile-block out" data-product="height">
+            <div class="t-label-wrap">
+              <div class="t-label">Canopy height</div>
+              <div class="t-kind">m</div>
+            </div>
+            <div class="tile" data-tile="hgt"></div>
+          </div>
+          <div class="tile-block out" data-product="canopyCover">
+            <div class="t-label-wrap">
+              <div class="t-label">Canopy cover</div>
+              <div class="t-kind">%</div>
+            </div>
+            <div class="tile" data-tile="cancov"></div>
+          </div>
+          <div class="tile-block out" data-product="cover">
+            <div class="t-label-wrap">
+              <div class="t-label">Forest cover</div>
+              <div class="t-kind">%</div>
+            </div>
+            <div class="tile" data-tile="cov"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-values">
+      <div class="prod-value" data-product="biomass">
+        <div class="pname">Biomass</div>
+        <div><span class="pval" id="pBio">—</span><span class="punit">t/ha</span></div>
+        <div class="psub" id="pBioSub">mean</div>
+      </div>
+      <div class="prod-value" data-product="height">
+        <div class="pname">Canopy height</div>
+        <div><span class="pval" id="pHgt">—</span><span class="punit">m</span></div>
+        <div class="psub" id="pHgtSub">p95 dominant</div>
+      </div>
+      <div class="prod-value" data-product="canopyCover">
+        <div class="pname">Canopy cover</div>
+        <div><span class="pval" id="pCanCov">—</span><span class="punit">%</span></div>
+        <div class="psub" id="pCanCovSub">gradual density</div>
+      </div>
+      <div class="prod-value" data-product="cover">
+        <div class="pname">Forest cover</div>
+        <div><span class="pval" id="pCov">—</span><span class="punit">%</span></div>
+        <div class="psub" id="pCovSub">canopy closure</div>
+      </div>
+    </div>
+
+    <div class="s-foot">
+      <span class="aoi" id="aoiCoord">−3.12°S · −60.02°W</span>
+      <span>Annual estimate</span>
+      <span class="year" id="aoiYear">2025</span>
+    </div>
   </div>
-</div>
+</section>
 
-<hr class="div">
-
+<!-- ======================== BUILDING ======================== -->
 <section id="building">
-  <p class="section-label">What I'm building on the side</p>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-accent" style="background:var(--teal)"></div>
-      <div class="card-title">A personal operating system</div>
-      <div class="card-sub">An autonomous agent that runs the operational layer of my life: emails, meetings, relationships, logistics, without being asked. It works while I sleep, flags what actually needs me, and handles everything else. The goal isn't productivity. It's a different relationship with time.</div>
-      <a href="#writing" class="card-internal-link">I'm building this in public →</a>
-    </div>
-    <div class="card">
-      <div class="card-accent" style="background:var(--amber)"></div>
-      <div class="card-title">KozyCare · building with my wife</div>
-      <div class="card-sub">Effortless rest for the ones who never stop. That's the idea behind KozyCare. My wife is building a sleep brand for people who live at full intensity. I'm building the infrastructure underneath it, so she can focus entirely on the product and the people it's for.</div>
-      <a href="https://kozycare.lovable.app" target="_blank" class="badge" style="background:var(--amber-bg);color:var(--amber-text);text-decoration:none;margin-top:.75rem;display:inline-block">kozycare.lovable.app ↗</a>
-    </div>
+  <div class="sec-head">
+    <div class="num">01 — What I'm building</div>
+    <h2>The day job, and <em>the side jobs.</em></h2>
+  </div>
+  <div class="projects">
+
+    <article class="card">
+      <div class="card-kicker">
+        <span>Kanop · full-time</span>
+        <span class="status">Scaling</span>
+      </div>
+      <h3>The geospatial intelligence partner for nature.</h3>
+      <p>
+        AI agents, satellite imagery, and scientific rigor — estimating above-ground biomass, tracking biodiversity, and delivering audit-grade MRV for nature-based solutions and supply chains. <b style="color:var(--ink)">Automating the workflows</b> that used to take months — eligibility, dynamic baselines, crediting projections.
+      </p>
+      <div class="kn-workflow" aria-hidden="true">
+        <div class="kn-head">
+          <span>KANOP · PROJECT WORKFLOW</span>
+          <span class="kn-prj"><i></i>PRJ-0412 · ARR · Amazon</span>
+        </div>
+        <div class="kn-stepper" id="knStepper">
+          <span class="kn-progress" id="knProgress"></span>
+          <div class="kn-step" data-step="0">
+            <span class="kn-dot"></span>
+            <span class="kn-step-num">01</span>
+            <span class="kn-step-name">Eligibility</span>
+          </div>
+          <div class="kn-step" data-step="1">
+            <span class="kn-dot"></span>
+            <span class="kn-step-num">02</span>
+            <span class="kn-step-name">Dynamic baseline</span>
+          </div>
+          <div class="kn-step" data-step="2">
+            <span class="kn-dot"></span>
+            <span class="kn-step-num">03</span>
+            <span class="kn-step-name">Crediting</span>
+          </div>
+        </div>
+        <div class="kn-stage" id="knStage">
+          <!-- populated by JS -->
+        </div>
+      </div>
+      <div class="link" style="margin-top:14px;"><a href="https://www.kanop.io" target="_blank" rel="noopener">kanop.io <span>↗</span></a></div>
+    </article>
+
+    <article class="card">
+      <div class="card-kicker">
+        <span>Intendant · personal</span>
+        <span class="status">Building in public</span>
+      </div>
+      <h3>A personal operating system.</h3>
+      <p>
+        An autonomous agent that runs the operational layer of my life — emails, meetings, relationships, logistics — without being asked. Works while I sleep, flags what actually needs me, and handles everything else. The goal isn't productivity. It's a different relationship with time.
+      </p>
+      <div class="agent-widget" aria-hidden="true">
+        <div class="agent-head">
+          <span>INTENDANT · LIVE</span>
+          <span id="agentStatus">● idle</span>
+        </div>
+        <div class="agent-log" id="agentLog"></div>
+      </div>
+      <div class="link" style="margin-top:14px;"><a href="#writing">Follow the build →</a></div>
+    </article>
+
+    <article class="card" style="grid-column: 1 / -1;">
+      <div class="card-kicker">
+        <span>KozyCare · with my wife</span>
+        <span class="status">Launching</span>
+      </div>
+      <div style="display:grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: center;">
+        <div>
+          <h3>Effortless rest for the ones who never stop.</h3>
+          <p>
+            That's the idea behind KozyCare. My wife is building a sleep brand for people who live at full intensity. I'm building the infrastructure underneath it — so she can focus entirely on the product and the people it's for.
+          </p>
+          <div class="link"><a href="https://kozycare.lovable.app" target="_blank" rel="noopener">kozycare.lovable.app <span>↗</span></a></div>
+        </div>
+        <div class="kozy-visual" aria-hidden="true">
+          <div class="kozy-head">
+            <span>Warmth</span>
+            <span class="live"><i></i>Kozy</span>
+          </div>
+          <div class="kozy-sun"></div>
+          <div class="kozy-ring r1"></div>
+          <div class="kozy-ring r2"></div>
+          <div class="kozy-ring r3"></div>
+          <div class="kozy-embers" id="kozyEmbers"></div>
+          <div class="kozy-caption">
+            Warmth, <em>made personal.</em>
+          </div>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
 
-<hr class="div">
-
+<!-- ======================== WRITING ======================== -->
 <section id="writing">
-  <p class="section-label">Intendant — build in public</p>
-  <p class="series-intro">I'm building a personal AI agent in public. Every design decision, written up as I make it.</p>
-  <ul class="series-list">
-    <li class="series-item">
-      <span class="series-num">01</span>
-      <div>
-        <a href="https://louisdevitry.substack.com/p/the-personal-ai-im-not-willing-to" target="_blank" class="series-title">The personal AI I'm not willing to outsource</a>
-        <div class="series-sub">Before I automate parts of my life, I want to know what I'm handing over.</div>
-      </div>
-    </li>
-    <li class="series-item">
-      <span class="series-num">02</span>
-      <div>
-        <a href="https://louisdevitry.substack.com/p/2-building-a-personal-ai-agent-i" target="_blank" class="series-title">Building a personal AI agent I actually trust</a>
-        <div class="series-sub">Envelopes, middleware, and why infrastructure comes before intelligence.</div>
-      </div>
-    </li>
-    <li class="series-item">
-      <span class="series-num">03</span>
-      <div>
-        <a href="https://louisdevitry.substack.com/p/3-before-the-agent-acts-something" target="_blank" class="series-title">Before the agent acts, something decides what it acts on</a>
-        <div class="series-sub">On queues, priority, and the design decision I almost got wrong.</div>
-      </div>
-    </li>
-    <li class="series-item">
-      <span class="series-num">04</span>
-      <div>
-        <a href="https://louisdevitry.substack.com/p/4-before-the-agent-gets-memory-it" target="_blank" class="series-title">Before the agent gets memory, it needs accountability</a>
-        <div class="series-sub">Why the first store layer is about trust, not personalization.</div>
-      </div>
-    </li>
-  </ul>
-  <a href="https://louisdevitry.substack.com" target="_blank" class="series-subscribe">Subscribe on Substack ↗</a>
-</section>
+  <div class="sec-head">
+    <div class="num">02 — Writing</div>
+    <h2>Intendant — <em>build in public.</em></h2>
+  </div>
 
-<hr class="div">
+  <p style="max-width: 62ch; color: var(--muted); margin: -12px 0 32px; font-size: 13px; line-height: 1.7;">
+    I'm building a personal AI agent in public. Every design decision, written up as I make it. No hype, no predictions, just the decisions as they come.
+  </p>
 
-<section id="publications">
-  <p class="section-label">Publications</p>
-  <div>
-    <div class="work-item">
-      <div class="work-bar" style="background:var(--subtle)"></div>
+  <div class="intendant">
+    <a class="post" href="https://louisdevitry.substack.com/p/the-personal-ai-im-not-willing-to" target="_blank" rel="noopener">
+      <span class="n">01</span>
       <div>
-        <div class="work-desc"><a href="https://ieeexplore.ieee.org/document/10950418" target="_blank" style="color:var(--text);text-decoration:none;font-weight:500">Extending InSAR2InSAR to Sentinel-1 Data</a> <span style="color:var(--subtle);font-size:13px">· IEEE Geoscience and Remote Sensing Letters · 2025</span></div>
+        <h4>The personal AI I'm not willing to outsource</h4>
+        <div class="dek">Before I automate parts of my life, I want to know what I'm handing over.</div>
       </div>
-    </div>
-    <div class="work-item">
-      <div class="work-bar" style="background:var(--subtle)"></div>
+      <span class="go">READ →</span>
+    </a>
+    <a class="post" href="https://louisdevitry.substack.com/p/2-building-a-personal-ai-agent-i" target="_blank" rel="noopener">
+      <span class="n">02</span>
       <div>
-        <div class="work-desc"><a href="https://ieeexplore.ieee.org/document/10715155" target="_blank" style="color:var(--text);text-decoration:none;font-weight:500">InSAR2InSAR: A Self-Supervised Method for InSAR Parameters Estimation</a> <span style="color:var(--subtle);font-size:13px">· EUSIPCO · 2024</span></div>
+        <h4>Building a personal AI agent I actually trust</h4>
+        <div class="dek">Envelopes, middleware, and why infrastructure comes before intelligence.</div>
       </div>
-    </div>
+      <span class="go">READ →</span>
+    </a>
+    <a class="post" href="https://louisdevitry.substack.com/p/3-before-the-agent-acts-something" target="_blank" rel="noopener">
+      <span class="n">03</span>
+      <div>
+        <h4>Before the agent acts, something decides what it acts on</h4>
+        <div class="dek">On queues, priority, and the design decision I almost got wrong.</div>
+      </div>
+      <span class="go">READ →</span>
+    </a>
+    <a class="post" href="https://louisdevitry.substack.com/p/4-before-the-agent-gets-memory-it" target="_blank" rel="noopener">
+      <span class="n">04</span>
+      <div>
+        <h4>Before the agent gets memory, it needs accountability</h4>
+        <div class="dek">Why the first store layer is about trust, not personalization.</div>
+      </div>
+      <span class="go">READ →</span>
+    </a>
+  </div>
+  <div class="intendant-foot">
+    <span>New essay every ~2 weeks.</span>
+    <a href="https://louisdevitry.substack.com" target="_blank" rel="noopener" class="btn">Subscribe on Substack <span class="arr">↗</span></a>
   </div>
 </section>
 
-<hr class="div">
-
+<!-- ======================== WORK ======================== -->
 <section id="work">
-  <p class="section-label">Experience & Education</p>
-  <div>
-    <div class="work-item">
-      <div class="work-bar" style="background:var(--teal)"></div>
-      <div>
-        <div class="work-title">Kanop</div>
-        <div class="work-role">Co-founder · CTO · April 2021 to today</div>
-        <div class="work-desc">Kanop is the geospatial intelligence partner for nature. We combine AI, satellite imagery and scientific expertise to estimate above-ground biomass, track biodiversity, and deliver rigorous MRV for nature-based solutions and supply chains. Operating globally, across forests and ecosystems on every continent. Built from scratch in 2021, now a team of engineers and scientists working at continental scale.</div>
-        <span class="badge" style="background:var(--bg2);color:var(--muted);border:0.5px solid var(--border)">IEEE Geoscience 2025 · EUSIPCO 2024 · CASSINI winner · EO Summit speaker</span>
-        <a href="https://kanop.io" target="_blank" class="badge" style="background:var(--teal-bg);color:var(--teal-text);text-decoration:none;margin-left:6px">kanop.io ↗</a>
+  <div class="sec-head">
+    <div class="num">03 — Work</div>
+    <h2>Experience &amp; <em>education.</em></h2>
+  </div>
+
+  <div class="xp-row">
+    <div class="when">Apr 2021 — today</div>
+    <div>
+      <h3 class="where">Kanop</h3>
+      <div class="role">Co-founder · CTO</div>
+      <div class="desc">
+        Kanop is the geospatial intelligence partner for nature. We combine AI, satellite imagery and scientific expertise to estimate above-ground biomass, track biodiversity, and deliver rigorous MRV for nature-based solutions and supply chains. Operating globally, across forests and ecosystems on every continent. Built from scratch in 2021, now a team of engineers and scientists working at continental scale.
+      </div>
+      <div class="tagline">IEEE Geoscience 2025 · EUSIPCO 2024 · CASSINI winner · EO Summit speaker</div>
+    </div>
+    <div class="side"><a href="https://kanop.io" target="_blank" rel="noopener" class="u">kanop.io ↗</a></div>
+  </div>
+
+  <div class="xp-row">
+    <div class="when">Jun 2019 — Apr 2021</div>
+    <div>
+      <h3 class="where">TheraPanacea</h3>
+      <div class="role">Research Engineer</div>
+      <div class="desc">
+        Built deep learning systems for oncology that ended up in clinical use. Automated segmentation of 80+ organs at risk, multi-modal image registration across CT and MRI, dose planning for radiotherapy. FDA and CE certified. Now used in roughly 20% of radiotherapy treatments in France. Did it all in MXNet, before PyTorch won the war.
       </div>
     </div>
-    <div class="work-item">
-      <div class="work-bar" style="background:var(--blue)"></div>
-      <div>
-        <div class="work-title">TheraPanacea</div>
-        <div class="work-role">Research Engineer · June 2019 to April 2021</div>
-        <div class="work-desc">Built deep learning systems for oncology that ended up in clinical use. Automated segmentation of 80+ organs at risk, multi-modal image registration across CT and MRI, dose planning for radiotherapy. FDA and CE certified. Now used in roughly 20% of radiotherapy treatments in France. Did it all in MXNet, before PyTorch won the war.</div>
+    <div class="side">Medical imaging · Paris</div>
+  </div>
+
+  <div class="xp-row">
+    <div class="when">2017 — 2019</div>
+    <div>
+      <h3 class="where">Shippeo &middot; Lucky Cart</h3>
+      <div class="role">Data Scientist</div>
+      <div class="desc">
+        Started writing ML models in R. At Shippeo, built arrival time prediction that outperformed Google Maps and HERE APIs for freight-specific logistics. At Lucky Cart, modelled promotional ROI in a market where 59% of promotions lose money. A different era — and a good one to have started in.
       </div>
     </div>
-    <div class="work-item">
-      <div class="work-bar" style="background:var(--blue)"></div>
-      <div>
-        <div class="work-title">Shippeo · Lucky Cart</div>
-        <div class="work-role">Data Scientist · 2017 to 2019</div>
-        <div class="work-desc">Started writing ML models in R. At Shippeo, built arrival time prediction that outperformed Google Maps and HERE APIs for freight-specific logistics. At Lucky Cart, modelled promotional ROI in a market where 59% of promotions lose money. A different era and a good one to have started in.</div>
+    <div class="side">Logistics · Retail</div>
+  </div>
+
+  <div class="xp-row">
+    <div class="when">2016 — 2020</div>
+    <div>
+      <h3 class="where">Student</h3>
+      <div class="role">EPFL · CentraleSupélec · KTH</div>
+      <div class="desc">
+        Started with pure mathematics at EPFL — the kind that makes everything else feel tractable. Moved into machine learning when the term still needed explaining; graduated top of class at CentraleSupélec's MSc in AI. Three countries, three research cultures, and enough linear algebra to last a lifetime. Wrote a public blog documenting what I was learning — with a section on climate change that turned out to be a preview of the next decade.
       </div>
     </div>
-    <div class="work-item">
-      <div class="work-bar" style="background:var(--subtle)"></div>
+    <div class="side"><a href="https://devitrylouis.github.io" target="_blank" rel="noopener" class="u">devitrylouis.github.io ↗</a></div>
+  </div>
+
+  <h3 style="font-family: var(--serif); font-weight: 400; font-size: 28px; letter-spacing: -0.01em; margin: 72px 0 16px;">Selected publications</h3>
+  <div class="pubs">
+    <a class="pub" href="https://ieeexplore.ieee.org/document/10950418" target="_blank" rel="noopener">
+      <span class="yr">2025</span>
       <div>
-        <div class="work-title">Student · EPFL · CentraleSupélec · KTH</div>
-        <div class="work-role">2016 to 2020</div>
-        <div class="work-desc">Started with pure mathematics at EPFL, the kind that makes everything else feel tractable. Moved into machine learning when the term still needed explaining, graduating top of class at CentraleSupélec's MSc in AI. Spent time across three countries, three research cultures, and enough linear algebra to last a lifetime. Wrote a public blog documenting what I was learning, and a section on climate change that turned out to be a preview of the next decade.</div>
-        <a href="https://devitrylouis.github.io" target="_blank" class="badge" style="background:var(--bg2);color:var(--muted);border:0.5px solid var(--border);text-decoration:none">devitrylouis.github.io · 2019 ↗</a>
+        <div class="ttl">Extending InSAR2InSAR to Sentinel-1 Data</div>
+        <span class="ven">IEEE Geoscience and Remote Sensing Letters</span>
       </div>
-    </div>
+      <span style="color: var(--muted);">↗</span>
+    </a>
+    <a class="pub" href="https://ieeexplore.ieee.org/document/10715155" target="_blank" rel="noopener">
+      <span class="yr">2024</span>
+      <div>
+        <div class="ttl">InSAR2InSAR: A Self-Supervised Method for InSAR Parameters Estimation</div>
+        <span class="ven">EUSIPCO</span>
+      </div>
+      <span style="color: var(--muted);">↗</span>
+    </a>
   </div>
 </section>
 
-<hr class="div">
-
-<footer id="contact">
-  <p>Paris, France · <a href="mailto:louisdevitry@gmail.com" style="color:var(--muted);text-decoration:none">louisdevitry@gmail.com</a></p>
-  <div class="footer-links">
-    <a href="https://linkedin.com/in/louis-de-vitry" target="_blank">LinkedIn</a>
-    <a href="https://github.com/devitrylouis" target="_blank">GitHub</a>
-    <a href="https://louisdevitry.substack.com" target="_blank">Substack</a>
-    <a href="https://www.kanop.io" target="_blank">Kanop</a>
+<!-- ======================== CONTACT ======================== -->
+<section class="contact" id="contact">
+  <div>
+    <div class="num" style="font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px;">04 — Contact</div>
+    <h2>Let's <em>talk.</em></h2>
+    <p style="color: var(--muted); max-width: 48ch; margin-top: 20px; font-size: 14px;">
+      I'm always up for a conversation about satellites, forests, autonomous systems, or building companies at the intersection of the three. Paris-based. Happy to meet in person.
+    </p>
   </div>
-</footer>
+  <div class="right">
+    <a href="mailto:louisdevitry@gmail.com"><span>louisdevitry@gmail.com</span><span class="arr">→</span></a>
+    <a href="https://linkedin.com/in/louis-de-vitry" target="_blank" rel="noopener"><span>LinkedIn</span><span class="arr">↗</span></a>
+    <a href="https://github.com/devitrylouis" target="_blank" rel="noopener"><span>GitHub</span><span class="arr">↗</span></a>
+    <a href="https://louisdevitry.substack.com" target="_blank" rel="noopener"><span>Substack</span><span class="arr">↗</span></a>
+    <a href="https://www.kanop.io" target="_blank" rel="noopener"><span>Kanop</span><span class="arr">↗</span></a>
+  </div>
+</section>
 
+<footer class="foot">
+  <div>Louis de Vitry · Paris, France</div>
+  <div id="foot-meta">© 2026 — handwritten, not generated</div>
+</footer>
+</main>
+
+<!-- ======================== TWEAKS ======================== -->
+<aside class="tweaks" id="tweaks" aria-label="Tweaks">
+  <h5>
+    <span>TWEAKS</span>
+    <span id="tweakClose" style="cursor:pointer; color:var(--muted);">×</span>
+  </h5>
+
+  <div class="group">
+    <label>Theme</label>
+    <div class="pills" data-tweak="theme">
+      <button class="pill" data-val="light">Light</button>
+      <button class="pill" data-val="dark">Dark</button>
+    </div>
+  </div>
+
+  <div class="group">
+    <label>Accent</label>
+    <div class="sw" data-tweak="accent">
+      <div class="s" data-val="moss" style="background:#3A5A3A" title="Moss"></div>
+      <div class="s" data-val="clay" style="background:#B4551E" title="Clay"></div>
+      <div class="s" data-val="sky"  style="background:#3A5A78" title="Sky"></div>
+      <div class="s" data-val="ink"  style="background:#1E1C17" title="Ink"></div>
+    </div>
+  </div>
+
+  <div class="group">
+    <label>Display typeface</label>
+    <div class="pills" data-tweak="type">
+      <button class="pill" data-val="serif">Serif</button>
+      <button class="pill" data-val="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="group">
+    <label>Density</label>
+    <div class="pills" data-tweak="density">
+      <button class="pill" data-val="default">Default</button>
+      <button class="pill" data-val="compact">Compact</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ======================== SCRIPTS ======================== -->
+<script>
+  // ---------- TWEAKS persistence ----------
+  const DEFAULTS = /*EDITMODE-BEGIN*/{
+    "theme": "light",
+    "accent": "moss",
+    "type": "serif",
+    "density": "default"
+  }/*EDITMODE-END*/;
+
+  const state = { ...DEFAULTS };
+
+  function applyState() {
+    const html = document.documentElement;
+    html.setAttribute('data-theme', state.theme);
+    html.setAttribute('data-accent', state.accent);
+    html.setAttribute('data-type', state.type);
+    html.setAttribute('data-density', state.density);
+
+    // Update pill/swatch UIs
+    document.querySelectorAll('[data-tweak]').forEach(group => {
+      const key = group.getAttribute('data-tweak');
+      group.querySelectorAll('[data-val]').forEach(el => {
+        el.classList.toggle('on', el.getAttribute('data-val') === state[key]);
+      });
+    });
+  }
+
+  function setKey(key, val) {
+    state[key] = val;
+    applyState();
+    // persist via host
+    try {
+      window.parent.postMessage({type: '__edit_mode_set_keys', edits: { [key]: val }}, '*');
+    } catch(e) {}
+  }
+
+  document.querySelectorAll('[data-tweak]').forEach(group => {
+    const key = group.getAttribute('data-tweak');
+    group.querySelectorAll('[data-val]').forEach(el => {
+      el.addEventListener('click', () => setKey(key, el.getAttribute('data-val')));
+    });
+  });
+
+  // Edit-mode protocol (register listener, THEN announce availability)
+  window.addEventListener('message', (e) => {
+    if (!e.data) return;
+    if (e.data.type === '__activate_edit_mode') {
+      document.getElementById('tweaks').classList.add('on');
+    }
+    if (e.data.type === '__deactivate_edit_mode') {
+      document.getElementById('tweaks').classList.remove('on');
+    }
+  });
+  try { window.parent.postMessage({type: '__edit_mode_available'}, '*'); } catch(e) {}
+
+  document.getElementById('tweakClose').addEventListener('click', () => {
+    document.getElementById('tweaks').classList.remove('on');
+  });
+
+  applyState();
+
+  // ---------- Clock ----------
+  function tickClock() {
+    const d = new Date();
+    const parisTime = new Date(d.toLocaleString('en-US', {timeZone: 'Europe/Paris'}));
+    const hh = String(parisTime.getHours()).padStart(2, '0');
+    const mm = String(parisTime.getMinutes()).padStart(2, '0');
+    const ss = String(parisTime.getSeconds()).padStart(2, '0');
+    document.getElementById('clock').textContent = `Paris · ${hh}:${mm}:${ss}`;
+  }
+  tickClock(); setInterval(tickClock, 1000);
+
+  // ---------- Multi-sensor stack: cycle through AOIs ----------
+  // Each AOI has plausible values for biomass / canopy height / forest cover, for a given year.
+
+  // Seeded PRNG so each AOI gets a distinct, stable scene
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}}
+
+  /*
+   * Build ONE scene (land shape, river path, forest blobs, DEM relief),
+   * then render it in 8 different sensor styles. This is what keeps all
+   * the imagery coherent: rivers cross every tile in the same place,
+   * AGB / height / cover are driven by the same forest-density field.
+   */
+  function buildScene(aoi) {
+    const rnd = mulberry32(aoi.seed);
+    const rn = (a,b) => a + (b-a)*rnd();
+
+    // --- land polygon: 10 radial samples, jittered ---
+    const cx = 28, cy = 28;
+    const landPts = [];
+    const lobes = 10;
+    for (let i = 0; i < lobes; i++) {
+      const ang = (i/lobes) * Math.PI * 2;
+      const r = 22 + rn(-6, 5);
+      landPts.push([cx + Math.cos(ang)*r, cy + Math.sin(ang)*r]);
+    }
+    // smooth via quadratic
+    let landD = `M${landPts[0][0]},${landPts[0][1]}`;
+    for (let i = 0; i < landPts.length; i++) {
+      const p = landPts[i];
+      const q = landPts[(i+1)%landPts.length];
+      const mx = (p[0]+q[0])/2, my = (p[1]+q[1])/2;
+      landD += ` Q${p[0]},${p[1]} ${mx},${my}`;
+    }
+    landD += 'Z';
+
+    // --- river: a curve that traverses the land from NW to SE ---
+    const riverPts = [[rn(4,10), rn(10,18)]];
+    for (let i = 1; i < 6; i++) {
+      riverPts.push([ riverPts[i-1][0] + rn(6,10), riverPts[i-1][1] + rn(2,7) ]);
+    }
+    let riverD = `M${riverPts[0][0]},${riverPts[0][1]}`;
+    for (let i = 1; i < riverPts.length; i++) {
+      const p = riverPts[i-1], q = riverPts[i];
+      riverD += ` S${(p[0]+q[0])/2+rn(-2,2)},${(p[1]+q[1])/2+rn(-2,2)} ${q[0]},${q[1]}`;
+    }
+
+    // --- forest clumps: N blobs of radius R, sized by forest density ---
+    const nBlobs = Math.round(10 + aoi.forest * 14);
+    const blobs = [];
+    for (let i = 0; i < nBlobs; i++) {
+      blobs.push({
+        x: rn(4, 52),
+        y: rn(4, 52),
+        r: rn(2.5, 6.5) * (0.6 + aoi.forest * 0.8),
+        density: rn(0.5, 1) // individual blob strength
+      });
+    }
+
+    // --- DEM bumps: M hills with height by relief ---
+    const nHills = Math.round(3 + aoi.relief * 6);
+    const hills = [];
+    for (let i = 0; i < nHills; i++) {
+      hills.push({ x: rn(6,50), y: rn(6,50), r: rn(8,18), h: rn(0.4, 1) });
+    }
+
+    // --- clearings (anti-forest) where cover is low ---
+    const nClear = Math.round((1 - aoi.forest) * 8);
+    const clearings = [];
+    for (let i = 0; i < nClear; i++) {
+      clearings.push({ x: rn(6,50), y: rn(6,50), r: rn(3, 7) });
+    }
+
+    return { aoi, landD, riverD, blobs, hills, clearings, rnd };
+  }
+
+  // --- render helpers: each returns an <svg> string for one tile ---
+  const SCENE_BASE = (scene, bg) => `<rect width="56" height="56" fill="${bg}"/>`;
+
+  // Forest blob paint — used by S2, Landsat, Biomass, Height
+  function forestBlobs(scene, fillFn) {
+    return scene.blobs.map(b =>
+      `<circle cx="${b.x.toFixed(2)}" cy="${b.y.toFixed(2)}" r="${b.r.toFixed(2)}" fill="${fillFn(b)}" />`
+    ).join('');
+  }
+  function clearingBlobs(scene, fill) {
+    return scene.clearings.map(b =>
+      `<circle cx="${b.x.toFixed(2)}" cy="${b.y.toFixed(2)}" r="${b.r.toFixed(2)}" fill="${fill}" />`
+    ).join('');
+  }
+  function hillBlobs(scene, fillFn) {
+    return scene.hills.map(h =>
+      `<circle cx="${h.x.toFixed(2)}" cy="${h.y.toFixed(2)}" r="${h.r.toFixed(2)}" fill="${fillFn(h)}" opacity=".7"/>`
+    ).join('');
+  }
+
+  function tileS2(scene) {
+    const land = `<path d="${scene.landD}" fill="#8AA866"/>`;
+    const blobs = forestBlobs(scene, b => `rgba(30,70,30,${0.45 + b.density*0.35})`);
+    const clearing = clearingBlobs(scene, 'rgba(200,180,120,.7)');
+    const river = `<path d="${scene.riverD}" stroke="#5A7890" stroke-width="1.4" fill="none" opacity=".9"/>`;
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <clipPath id="c-${scene.aoi.seed}-land"><path d="${scene.landD}"/></clipPath>
+        <filter id="f-s2-${scene.aoi.seed}"><feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="${scene.aoi.seed}"/><feColorMatrix values="0 0 0 0 0.2  0 0 0 0 0.35  0 0 0 0 0.15  0 0 0 .35 0"/></filter>
+      </defs>
+      <rect width="56" height="56" fill="#E4D9BE"/>
+      <g clip-path="url(#c-${scene.aoi.seed}-land)">
+        ${land}
+        ${blobs}
+        ${clearing}
+        <rect width="56" height="56" filter="url(#f-s2-${scene.aoi.seed})" opacity=".6"/>
+      </g>
+      ${river}
+    </svg>`;
+  }
+
+  function tileLS(scene) {
+    const land = `<path d="${scene.landD}" fill="#9AA868"/>`;
+    // Landsat = lower res: use fewer, larger rectangular pixels
+    const blobs = forestBlobs(scene, b => `rgba(60,80,40,${0.4 + b.density*0.3})`);
+    const clearing = clearingBlobs(scene, 'rgba(190,170,110,.75)');
+    const river = `<path d="${scene.riverD}" stroke="#6A7A88" stroke-width="1.7" fill="none" opacity=".8"/>`;
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <clipPath id="c-ls-${scene.aoi.seed}"><path d="${scene.landD}"/></clipPath>
+        <filter id="f-ls-${scene.aoi.seed}"><feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" seed="${scene.aoi.seed+3}"/><feColorMatrix values="0 0 0 0 0.3  0 0 0 0 0.4  0 0 0 0 0.2  0 0 0 .55 -.1"/></filter>
+      </defs>
+      <rect width="56" height="56" fill="#E8DDB8"/>
+      <g clip-path="url(#c-ls-${scene.aoi.seed})">
+        ${land}
+        ${blobs}
+        ${clearing}
+        <rect width="56" height="56" filter="url(#f-ls-${scene.aoi.seed})" opacity=".65"/>
+      </g>
+      ${river}
+    </svg>`;
+  }
+
+  function tileSAR(scene, freq, seedOff, bg) {
+    // SAR: forested areas have strong backscatter (bright); water is dark; clearings darker than forest
+    const land = `<path d="${scene.landD}" fill="#A09884"/>`;
+    const blobs = forestBlobs(scene, b => `rgba(240,232,214,${0.55 + b.density*0.35})`);
+    const clearing = clearingBlobs(scene, 'rgba(60,52,42,.65)');
+    const river = `<path d="${scene.riverD}" stroke="#12100A" stroke-width="1.6" fill="none" opacity=".95"/>`;
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <clipPath id="c-sar-${scene.aoi.seed}-${seedOff}"><path d="${scene.landD}"/></clipPath>
+        <filter id="f-sar-${scene.aoi.seed}-${seedOff}"><feTurbulence type="fractalNoise" baseFrequency="${freq}" numOctaves="1" seed="${scene.aoi.seed+seedOff}"/><feColorMatrix values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 .9 -.1"/><feBlend in2="SourceGraphic" mode="overlay"/></filter>
+      </defs>
+      <rect width="56" height="56" fill="${bg}"/>
+      <g clip-path="url(#c-sar-${scene.aoi.seed}-${seedOff})">
+        ${land}
+        ${blobs}
+        ${clearing}
+      </g>
+      ${river}
+      <rect width="56" height="56" filter="url(#f-sar-${scene.aoi.seed}-${seedOff})" opacity=".85" style="mix-blend-mode:overlay"/>
+    </svg>`;
+  }
+  const tileS1 = s => tileSAR(s, 2.0, 7, '#1A160E');
+  const tilePAL = s => tileSAR(s, 0.9, 13, '#1C1812');
+
+  function tileDEM(scene) {
+    // Hypsometric: height field from hills, coloured via gradient by elevation
+    const hills = scene.hills.map(h => {
+      const col = h.h < 0.35 ? '#4E7A3E' : h.h < 0.6 ? '#B0A260' : h.h < 0.85 ? '#A86838' : '#6E3A1E';
+      return `<circle cx="${h.x}" cy="${h.y}" r="${h.r}" fill="${col}" opacity=".75"/>`;
+    }).join('');
+    // low base
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs><clipPath id="c-dem-${scene.aoi.seed}"><path d="${scene.landD}"/></clipPath></defs>
+      <rect width="56" height="56" fill="#C9BFA6"/>
+      <g clip-path="url(#c-dem-${scene.aoi.seed})">
+        <path d="${scene.landD}" fill="#2E5A32"/>
+        ${hills}
+      </g>
+      <!-- contour lines trace the river valley -->
+      <path d="${scene.riverD}" stroke="rgba(0,0,0,.35)" stroke-width=".5" fill="none"/>
+    </svg>`;
+  }
+
+  // OUTPUTS: same scene, different rendering. Biomass/height/cover all derive from forest blobs.
+  function tileBio(scene) {
+    // Heatmap: bright/warm where forest is dense
+    const blobs = scene.blobs.map(b => {
+      const v = b.density;
+      const col = v > 0.85 ? '#0F3A20' : v > 0.7 ? '#3E7A3C' : v > 0.55 ? '#B8B04C' : '#D98A3C';
+      return `<circle cx="${b.x}" cy="${b.y}" r="${b.r*1.1}" fill="${col}" opacity=".95"/>`;
+    }).join('');
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs><clipPath id="c-bio-${scene.aoi.seed}"><path d="${scene.landD}"/></clipPath></defs>
+      <rect width="56" height="56" fill="#E4D9BE"/>
+      <g clip-path="url(#c-bio-${scene.aoi.seed})">
+        <path d="${scene.landD}" fill="#8E3A1E" opacity=".4"/>
+        ${blobs}
+      </g>
+      <!-- river visible as a gap in biomass -->
+      <path d="${scene.riverD}" stroke="#E4D9BE" stroke-width="1.4" fill="none"/>
+    </svg>`;
+  }
+
+  function tileHgt(scene) {
+    // Canopy height: green ramp driven by SAME blob density (tall = dense = dark green)
+    const blobs = scene.blobs.map(b => {
+      const v = b.density;
+      const col = v > 0.85 ? '#0F2A1A' : v > 0.7 ? '#2E5A32' : v > 0.55 ? '#6EA246' : '#B8C472';
+      return `<circle cx="${b.x}" cy="${b.y}" r="${b.r*1.1}" fill="${col}" opacity=".92"/>`;
+    }).join('');
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs><clipPath id="c-hgt-${scene.aoi.seed}"><path d="${scene.landD}"/></clipPath></defs>
+      <rect width="56" height="56" fill="#F0E4C8"/>
+      <g clip-path="url(#c-hgt-${scene.aoi.seed})">
+        <path d="${scene.landD}" fill="#E4D4A6"/>
+        ${blobs}
+      </g>
+      <path d="${scene.riverD}" stroke="#F0E4C8" stroke-width="1.4" fill="none"/>
+    </svg>`;
+  }
+
+  function tileCov(scene) {
+    // Binary mask: same blobs filled solid green. River excluded (non-forest).
+    const blobs = scene.blobs.map(b =>
+      `<circle cx="${b.x}" cy="${b.y}" r="${b.r*1.15}" fill="#2E5A32"/>`
+    ).join('');
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs><clipPath id="c-cov-${scene.aoi.seed}"><path d="${scene.landD}"/></clipPath></defs>
+      <rect width="56" height="56" fill="#F0E4C8"/>
+      <g clip-path="url(#c-cov-${scene.aoi.seed})">
+        <path d="${scene.landD}" fill="#E8D9AE"/>
+        ${blobs}
+      </g>
+      <path d="${scene.riverD}" stroke="#F0E4C8" stroke-width="1.6" fill="none"/>
+    </svg>`;
+  }
+
+  // Canopy cover — a GRADIENT density map (as opposed to the binary Forest
+  // cover tile). Uses a hatched/contour layered approach to look visibly
+  // distinct from the canopy-HEIGHT tile: concentric density rings around
+  // each blob centre to read as 0–100% continuous coverage at a glance.
+  function tileCanCov(scene) {
+    const layers = scene.blobs.map(b => {
+      const v = b.density; // 0..1
+      // three concentric fills — inner darkest, outer palest — to evoke
+      // a gradual canopy density contour map
+      const rOuter = b.r * 1.25;
+      const rMid   = b.r * 0.85;
+      const rInner = b.r * 0.45;
+      const op = 0.35 + v * 0.55;
+      return `
+        <circle cx="${b.x}" cy="${b.y}" r="${rOuter}" fill="#C8D798" opacity="${(op*0.55).toFixed(2)}"/>
+        <circle cx="${b.x}" cy="${b.y}" r="${rMid}"   fill="#6EA246" opacity="${(op*0.75).toFixed(2)}"/>
+        <circle cx="${b.x}" cy="${b.y}" r="${rInner}" fill="#1E4A2A" opacity="${op.toFixed(2)}"/>
+      `;
+    }).join('');
+    return `
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs><clipPath id="c-cc-${scene.aoi.seed}"><path d="${scene.landD}"/></clipPath></defs>
+      <rect width="56" height="56" fill="#F2EAD0"/>
+      <g clip-path="url(#c-cc-${scene.aoi.seed})">
+        <path d="${scene.landD}" fill="#E6DCB0"/>
+        ${layers}
+      </g>
+      <path d="${scene.riverD}" stroke="#F2EAD0" stroke-width="1.5" fill="none"/>
+    </svg>`;
+  }
+
+  const TILE_RENDERERS = {
+    s2: tileS2, ls: tileLS, s1: tileS1, palsar: tilePAL, dem: tileDEM,
+    bio: tileBio, hgt: tileHgt, cancov: tileCanCov, cov: tileCov,
+  };
+
+  function renderAllTiles(aoi) {
+    const scene = buildScene(aoi);
+    document.querySelectorAll('.tile[data-tile]').forEach(el => {
+      const kind = el.getAttribute('data-tile');
+      const fn = TILE_RENDERERS[kind];
+      if (fn) el.innerHTML = fn(scene) + '<span class="scan"></span>';
+    });
+  }
+
+  const AOIS = [
+    // seed drives shape; forest=0..1 drives greenness/biomass coupling; relief=0..1 drives DEM variance
+    { id: 'AOI-0412', name: 'Amazon Basin',       coord: '−3.12°S · −60.02°W',  year: 2025, bio: 284.6, ci: 14.8, hgt: 28.4, canCov: 86.2, cov: 92, seed: 41, forest: 0.93, relief: 0.25 },
+    { id: 'AOI-0117', name: 'Congo · Mai-Ndombe', coord: '−2.41°S · 18.80°E',   year: 2025, bio: 246.1, ci: 12.9, hgt: 26.1, canCov: 81.4, cov: 88, seed: 117, forest: 0.87, relief: 0.32 },
+    { id: 'AOI-0823', name: 'Borneo · Sabah',     coord: '5.28°N · 117.93°E',   year: 2025, bio: 312.4, ci: 16.2, hgt: 31.7, canCov: 78.6, cov: 84, seed: 823, forest: 0.82, relief: 0.78 },
+    { id: 'AOI-0541', name: 'Kenya · Mau',        coord: '−0.51°S · 35.72°E',   year: 2024, bio: 148.3, ci: 9.4,  hgt: 18.9, canCov: 52.8, cov: 61, seed: 541, forest: 0.58, relief: 0.88 },
+    { id: 'AOI-0309', name: 'Mexico · Yucatán',   coord: '19.81°N · −89.14°W',  year: 2024, bio: 132.7, ci: 8.8,  hgt: 16.2, canCov: 64.5, cov: 72, seed: 309, forest: 0.68, relief: 0.15 },
+    { id: 'AOI-0688', name: 'France · Landes',    coord: '44.31°N · −1.12°W',   year: 2025, bio: 96.4,  ci: 7.1,  hgt: 22.3, canCov: 68.9, cov: 78, seed: 688, forest: 0.74, relief: 0.18 },
+  ];
+
+  const pBio = document.getElementById('pBio');
+  const pBioSub = document.getElementById('pBioSub');
+  const pHgt = document.getElementById('pHgt');
+  const pCanCov = document.getElementById('pCanCov');
+  const pCov = document.getElementById('pCov');
+  const aoiLabel = document.getElementById('aoiLabel');
+  const aoiCoord = document.getElementById('aoiCoord');
+  const aoiYear  = document.getElementById('aoiYear');
+  const sensors  = document.querySelectorAll('.tile-block[data-layer]');
+  const products = document.querySelectorAll('.prod-value');
+
+  function animateNumber(el, from, to, decimals, dur=900) {
+    const start = performance.now();
+    function step(t) {
+      const p = Math.min(1, (t - start) / dur);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const v = from + (to - from) * ease;
+      el.textContent = decimals ? v.toFixed(decimals) : Math.round(v).toString();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Sequence: light up sensors one-by-one → fuse → light up products → cycle AOI
+  let aoiIdx = 0;
+  let prev = { bio: 0, hgt: 0, canCov: 0, cov: 0 };
+
+  // ---------- Beam layout (DOM-measured) ----------
+  // Computes smooth cubic curves from each input tile's right edge to the
+  // fusion-core's left edge, and from the core's right edge to each output
+  // tile's left edge. All coords are in .flow's local pixel space.
+  function layoutBeams() {
+    const flow = document.querySelector('.flow');
+    const core = document.querySelector('.fusion-core');
+    if (!flow || !core) return;
+    const fRect = flow.getBoundingClientRect();
+    const cRect = core.getBoundingClientRect();
+    // Center of the core in flow-local coords
+    const cx = cRect.left + cRect.width / 2 - fRect.left;
+    const cy = cRect.top  + cRect.height / 2 - fRect.top;
+    // Glyph has a visible outer radius ≈ 46/50 of half-width (halo circle).
+    // Use a slightly smaller anchor so the beam tips kiss the outer ring.
+    const anchorR = Math.min(cRect.width, cRect.height) * 0.46;
+
+    // Size the svg to match flow
+    const svg = flow.querySelector('svg.beams');
+    if (!svg) return;
+    svg.setAttribute('viewBox', `0 0 ${fRect.width} ${fRect.height}`);
+
+    // Helper: draw a smooth curve between two points with horizontal tangents
+    const curve = (x1, y1, x2, y2) => {
+      const dx = Math.max(28, Math.abs(x2 - x1) * 0.55);
+      return `M ${x1.toFixed(1)},${y1.toFixed(1)} C ${(x1 + dx).toFixed(1)},${y1.toFixed(1)} ${(x2 - dx).toFixed(1)},${y2.toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`;
+    };
+
+    // ---- Inputs ----
+    const inputMap = {
+      s2: 's2', ls: 'ls', s1: 's1', palsar: 'palsar', dem: 'dem',
+    };
+    Object.keys(inputMap).forEach(key => {
+      const block = document.querySelector(`.tile-block[data-layer="${key}"]`);
+      const path  = svg.querySelector(`path.b-${key}`);
+      if (!block || !path) return;
+      const tileEl = block.querySelector('.tile') || block;
+      const t = tileEl.getBoundingClientRect();
+      // right edge of tile, vertically centered
+      const x1 = t.right - fRect.left;
+      const y1 = t.top + t.height / 2 - fRect.top;
+      // anchor on left side of core, at same angle
+      const dx = cx - x1, dy = cy - y1;
+      const mag = Math.hypot(dx, dy) || 1;
+      const ax = cx - (dx / mag) * anchorR;
+      const ay = cy - (dy / mag) * anchorR;
+      path.setAttribute('d', curve(x1, y1, ax, ay));
+    });
+
+    // ---- Outputs ----
+    const outputMap = {
+      biomass: 'bio', height: 'hgt', canopyCover: 'cancov', cover: 'cov',
+    };
+    Object.keys(outputMap).forEach(product => {
+      const block = document.querySelector(`.tile-block.out[data-product="${product}"]`);
+      const path  = svg.querySelector(`path.b-${outputMap[product]}`);
+      if (!block || !path) return;
+      const tileEl = block.querySelector('.tile') || block;
+      const t = tileEl.getBoundingClientRect();
+      // left edge of tile, vertically centered
+      const x2 = t.left - fRect.left;
+      const y2 = t.top + t.height / 2 - fRect.top;
+      const dx = x2 - cx, dy = y2 - cy;
+      const mag = Math.hypot(dx, dy) || 1;
+      const ax = cx + (dx / mag) * anchorR;
+      const ay = cy + (dy / mag) * anchorR;
+      path.setAttribute('d', curve(ax, ay, x2, y2));
+    });
+  }
+
+  // Re-layout on resize and whenever the stack card resizes (fonts, etc.)
+  window.addEventListener('resize', layoutBeams);
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(() => layoutBeams());
+    const flow = document.querySelector('.flow');
+    if (flow) ro.observe(flow);
+  }
+  // After fonts are ready, re-layout once more (widths may shift).
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => layoutBeams());
+  }
+  // Initial layout as soon as we can
+  requestAnimationFrame(() => requestAnimationFrame(layoutBeams));
+
+  async function runCycle() {
+    const a = AOIS[aoiIdx];
+    aoiLabel.textContent = `${a.id} · ${a.name}`;
+    aoiCoord.textContent = a.coord;
+    aoiYear.textContent  = a.year;
+
+    // regenerate all tiles from a shared scene so sensors + outputs are coherent
+    renderAllTiles(a);
+
+    // reset
+    document.querySelectorAll('.tile-block').forEach(s => s.classList.remove('active'));
+    products.forEach(p => p.classList.remove('lit'));
+    document.querySelectorAll('.beam').forEach(b => b.classList.remove('on'));
+
+    // layers light up sequentially with core burst + beam
+    const order = ['s2', 'ls', 's1', 'palsar', 'dem'];
+    const core = document.querySelector('.fusion-core');
+    for (const name of order) {
+      await sleep(320);
+      const s = document.querySelector(`.tile-block[data-layer="${name}"]`);
+      if (s) s.classList.add('active');
+      const beam = document.querySelector(`.beam.b-${name}`);
+      if (beam) beam.classList.add('on');
+      if (core) { core.classList.remove('burst'); void core.offsetWidth; core.classList.add('burst'); }
+    }
+
+    await sleep(500);
+    document.querySelectorAll('.beam.b-out').forEach(b => b.classList.add('on'));
+    if (core) { core.classList.remove('burst'); void core.offsetWidth; core.classList.add('burst'); }
+    await sleep(200);
+
+    // products populate
+    animateNumber(pBio, prev.bio, a.bio, 1);
+    pBioSub.textContent = `mean · ±${a.ci.toFixed(1)} t/ha`;
+    document.querySelector('.tile-block.out[data-product="biomass"]').classList.add('active');
+    document.querySelector('.prod-value[data-product="biomass"]').classList.add('lit');
+    await sleep(350);
+    animateNumber(pHgt, prev.hgt, a.hgt, 1);
+    document.querySelector('.tile-block.out[data-product="height"]').classList.add('active');
+    document.querySelector('.prod-value[data-product="height"]').classList.add('lit');
+    await sleep(350);
+    animateNumber(pCanCov, prev.canCov, a.canCov, 1);
+    document.querySelector('.tile-block.out[data-product="canopyCover"]').classList.add('active');
+    document.querySelector('.prod-value[data-product="canopyCover"]').classList.add('lit');
+    await sleep(350);
+    animateNumber(pCov, prev.cov, a.cov, 0);
+    document.querySelector('.tile-block.out[data-product="cover"]').classList.add('active');
+    document.querySelector('.prod-value[data-product="cover"]').classList.add('lit');
+
+    prev = { bio: a.bio, hgt: a.hgt, canCov: a.canCov, cov: a.cov };
+
+    await sleep(4200); // hold
+    aoiIdx = (aoiIdx + 1) % AOIS.length;
+    runCycle();
+  }
+
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+  runCycle();
+
+  // ---------- Kanop workflow timeline (live) ----------
+  // Auto-loops through a project's lifecycle: eligibility → dynamic baseline → crediting.
+  const knStage = document.getElementById('knStage');
+  const knSteps = [...document.querySelectorAll('.kn-step')];
+  const knProgress = document.getElementById('knProgress');
+
+  // ---- Stage 1: Eligibility matrix ----
+  function buildElig() {
+    const standards = ['Verra VM0047', 'Isometric', 'Equitable Earth'];
+    const checks = [
+      { name: 'Land tenure',       results: [1, 1, 1] },
+      { name: 'Additionality',     results: [1, 2, 1] },
+      { name: 'Forest definition', results: [1, 1, 1] },
+      { name: 'Permanence',        results: [2, 1, 2] },
+      { name: 'Leakage risk',      results: [1, 1, 1] },
+    ];
+    const sym = r => r === 1 ? '✓' : r === 2 ? '⚠' : '×';
+    const cls = r => r === 1 ? 'pass' : r === 2 ? 'warn' : 'fail';
+    const totals = standards.map((_, ci) => checks.reduce((s, c) => s + (c.results[ci] === 1 ? 1 : 0), 0));
+    let h = '<div class="kn-sub">Running checks across <b>3 standards</b> · ARR · 48,200 ha</div>';
+    h += '<div class="kn-elig">';
+    h += '<div class="kn-elig-h">Criterion</div>';
+    for (const s of standards) h += `<div class="kn-elig-h">${s}</div>`;
+    for (let ri = 0; ri < checks.length; ri++) {
+      const c = checks[ri];
+      const rowDelay = 0.15 + ri * 0.16;
+      h += `<div class="kn-elig-row" style="opacity:0;animation:knCellIn .3s ${rowDelay}s ease forwards">${c.name}</div>`;
+      for (let ci = 0; ci < 3; ci++) {
+        const r = c.results[ci];
+        const delay = rowDelay + 0.06 + ci * 0.07;
+        h += `<div class="kn-elig-cell ${cls(r)}" style="animation-delay:${delay}s">${sym(r)}</div>`;
+      }
+    }
+    const footDelay = 0.15 + checks.length * 0.16 + 0.2;
+    h += `<div class="kn-elig-foot" style="animation-delay:${footDelay}s">Verdict</div>`;
+    for (let ci = 0; ci < 3; ci++) {
+      const t = totals[ci];
+      const isPass = t === 5;
+      const status = isPass ? 'pass' : 'warn';
+      const label = isPass ? 'Eligible' : 'Partial';
+      h += `<div class="kn-elig-foot ${status}" style="animation-delay:${footDelay + 0.08 * (ci + 1)}s"><div>${label}</div><div class="kn-elig-score">${t} / 5</div></div>`;
+    }
+    h += '</div>';
+    return h;
+  }
+
+  // ---- Stage 2: Dynamic baseline ----
+  function buildBaseline() {
+    // Years 2020 → 2025, t CO₂e/ha
+    const years = [2020, 2021, 2022, 2023, 2024, 2025];
+    const bau   = [0, 0.4, 0.8, 1.0, 1.1, 1.2];
+    const proj  = [0, 4,   9,  15,  22,  28];
+    // viewBox: 0 0 340 150. plot: x 30→320 (290 wide), y 14→112 (98 tall)
+    const xPad = 30, xMax = 320, yTop = 14, yBot = 112;
+    const yMax = 30;
+    const xAt = i => xPad + (xMax - xPad) * i / (years.length - 1);
+    const yAt = v => yBot - (yBot - yTop) * v / yMax;
+    const lineD = arr => arr.map((v, i) => `${i === 0 ? 'M' : 'L'}${xAt(i).toFixed(1)},${yAt(v).toFixed(1)}`).join(' ');
+    const projD = lineD(proj);
+    const bauD  = lineD(bau);
+    // additionality area
+    const areaD = (
+      proj.map((v, i) => `${i === 0 ? 'M' : 'L'}${xAt(i).toFixed(1)},${yAt(v).toFixed(1)}`).join(' ')
+      + ' ' +
+      bau.slice().reverse().map((v, i) => `L${xAt(years.length - 1 - i).toFixed(1)},${yAt(v).toFixed(1)}`).join(' ')
+      + ' Z'
+    );
+    // y axis ticks
+    const yTicks = [0, 10, 20, 30];
+    const xTicks = years;
+    let svg = `<svg class="kn-chart" viewBox="0 0 340 132" preserveAspectRatio="none">`;
+    // grid + axes
+    for (const t of yTicks) {
+      const y = yAt(t);
+      svg += `<line class="kn-grid" x1="${xPad}" x2="${xMax}" y1="${y}" y2="${y}"/>`;
+      svg += `<text x="${xPad - 4}" y="${y + 2.5}" text-anchor="end">${t}</text>`;
+    }
+    svg += `<line class="kn-axis" x1="${xPad}" x2="${xMax}" y1="${yBot}" y2="${yBot}"/>`;
+    for (let i = 0; i < xTicks.length; i++) {
+      const x = xAt(i);
+      svg += `<text x="${x}" y="${yBot + 9}" text-anchor="middle">${String(xTicks[i]).slice(2)}</text>`;
+    }
+    svg += `<text x="${xPad - 4}" y="${yTop - 4}" text-anchor="end" style="font-size:6.5px;fill:var(--muted-2)">tCO₂e/ha</text>`;
+    // data (revealed left-to-right)
+    svg += `<g class="kn-data">`;
+    svg += `<path class="kn-baseline-area" d="${areaD}"/>`;
+    svg += `<path class="kn-baseline-line bau" d="${bauD}"/>`;
+    svg += `<path class="kn-baseline-line proj" d="${projD}"/>`;
+    // dots on project
+    for (let i = 0; i < proj.length; i++) {
+      svg += `<circle class="kn-baseline-dot" cx="${xAt(i).toFixed(1)}" cy="${yAt(proj[i]).toFixed(1)}" r="1.8"/>`;
+    }
+    // inline labels
+    svg += `<text class="kn-baseline-label proj" x="${xAt(5) - 2}" y="${yAt(proj[5]) - 4}" text-anchor="end">project +28.0</text>`;
+    svg += `<text class="kn-baseline-label bau"  x="${xAt(5) - 2}" y="${yAt(bau[5]) - 3}" text-anchor="end">baseline +1.2</text>`;
+    svg += `</g>`;
+    svg += `</svg>`;
+    let h = '<div class="kn-sub">Counterfactual from <b>2,148 matched control plots</b> · 142,000 ha reference</div>';
+    h += `<div class="kn-chart-wrap">${svg}</div>`;
+    h += '<div class="kn-foot"><span>Net additionality over 6 yr</span><span><b>+27.4 tCO₂e / ha</b> · 95% CI ±2.1</span></div>';
+    return h;
+  }
+
+  // ---- Stage 3: Crediting projections ----
+  function buildCrediting() {
+    // 30 years of annual credit issuance, kt CO₂e
+    const annual = [8,14,22,32,44,55,65,73,80,86,90,93,95,96,96,95,94,92,90,87,84,81,78,75,72,69,66,63,60,57];
+    const verifiedYears = 3; // first 3 verified, rest projected
+    const yearStart = 2025;
+    // viewBox: 0 0 340 132. plot: x 30→325, y 14→105
+    const xPad = 30, xMax = 325, yTop = 14, yBot = 105;
+    const maxBar = Math.max(...annual);
+    const barW = (xMax - xPad) / annual.length;
+    const yAt = v => yBot - (yBot - yTop) * v / maxBar;
+    // cumulative line scaled to plot
+    const cum = annual.reduce((acc, v, i) => { acc.push((acc[i - 1] || 0) + v); return acc; }, []);
+    const cumMax = cum[cum.length - 1];
+    const yCum = v => yBot - (yBot - yTop) * v / cumMax;
+    let svg = `<svg class="kn-chart" viewBox="0 0 340 132" preserveAspectRatio="none">`;
+    // axis
+    svg += `<line class="kn-axis" x1="${xPad}" x2="${xMax}" y1="${yBot}" y2="${yBot}"/>`;
+    // grid
+    for (const t of [25, 50, 75, 100]) {
+      const y = yAt(t);
+      svg += `<line class="kn-grid" x1="${xPad}" x2="${xMax}" y1="${y}" y2="${y}"/>`;
+    }
+    svg += `<text x="${xPad - 4}" y="${yTop + 4}" text-anchor="end" style="font-size:6.5px;fill:var(--muted-2)">kt/yr</text>`;
+    // x ticks every 5 years
+    for (let i = 0; i < annual.length; i += 5) {
+      const x = xPad + barW * i + barW / 2;
+      svg += `<text class="kn-credit-tick" x="${x}" y="${yBot + 9}" text-anchor="middle">'${String(yearStart + i).slice(2)}</text>`;
+    }
+    // data revealed left-to-right
+    svg += `<g class="kn-data">`;
+    for (let i = 0; i < annual.length; i++) {
+      const x = xPad + barW * i + 0.6;
+      const w = Math.max(barW - 1.2, 1);
+      const y = yAt(annual[i]);
+      const cls = i < verifiedYears ? 'verified' : 'projected';
+      svg += `<rect class="kn-bar ${cls}" x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${w.toFixed(2)}" height="${(yBot - y).toFixed(2)}"/>`;
+    }
+    // verified/projected divider line
+    const divX = xPad + barW * verifiedYears;
+    svg += `<line x1="${divX}" x2="${divX}" y1="${yTop - 2}" y2="${yBot + 2}" stroke="var(--rule-strong)" stroke-width=".5" stroke-dasharray="2 2"/>`;
+    svg += `<text x="${divX + 2}" y="${yTop + 2}" style="font-size:6.5px;fill:var(--muted-2)">projected →</text>`;
+    // cumulative line
+    const cumD = cum.map((v, i) => `${i === 0 ? 'M' : 'L'}${(xPad + barW * i + barW / 2).toFixed(2)},${yCum(v).toFixed(2)}`).join(' ');
+    svg += `<path class="kn-cum" d="${cumD}"/>`;
+    // cumulative end label
+    const lastX = xPad + barW * (annual.length - 1) + barW / 2;
+    const lastY = yCum(cumMax);
+    svg += `<text x="${lastX - 3}" y="${lastY - 3}" text-anchor="end" style="font-size:7px;fill:var(--ink-2);font-weight:500">cumulative</text>`;
+    svg += `</g>`;
+    svg += `</svg>`;
+    let h = '<div class="kn-sub">30-year ARR · vintage 2025 · methodology Verra <b>VM0047</b></div>';
+    h += `<div class="kn-chart-wrap">${svg}</div>`;
+    h += '<div class="kn-foot">';
+    h += '<span><span class="kn-legend"><i class="verified"></i>verified</span><span class="kn-legend"><i class="projected"></i>projected</span><span class="kn-legend"><i class="cum"></i>cumulative</span></span>';
+    h += '<span><b>2.05 M credits</b> · NPV $34.2 M @ 8%</span>';
+    h += '</div>';
+    return h;
+  }
+
+  const knBuilders = [buildElig, buildBaseline, buildCrediting];
+  const knDwells = [5400, 6000, 6000];
+
+  function setKnProgress(idx) {
+    // bar spans from dot 1 to dot 3 = 66.66% of stepper width
+    // at idx 0: 0%; idx 1: 33.33%; idx 2: 66.66%
+    const trackPct = 100 - 2 * 16.66;
+    const w = idx === 0 ? 0 : (idx === 1 ? trackPct / 2 : trackPct);
+    knProgress.style.width = w + '%';
+    knSteps.forEach((s, i) => {
+      s.classList.toggle('active', i === idx);
+      s.classList.toggle('done', i < idx);
+    });
+  }
+
+  async function knCycle(idx) {
+    setKnProgress(idx);
+    // fade out existing
+    if (knStage.firstElementChild) {
+      knStage.firstElementChild.classList.remove('in');
+      await sleep(320);
+    }
+    knStage.innerHTML = '';
+    const panel = document.createElement('div');
+    panel.className = 'kn-panel';
+    panel.innerHTML = knBuilders[idx]();
+    knStage.appendChild(panel);
+    // force reflow then fade in
+    void panel.offsetHeight;
+    panel.classList.add('in');
+    await sleep(knDwells[idx]);
+    knCycle((idx + 1) % knBuilders.length);
+  }
+
+  const kanopCard = document.getElementById('knStage').closest('.card');
+  const kanopObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        knCycle(0);
+        kanopObserver.disconnect();
+      }
+    });
+  }, { threshold: .3 });
+  kanopObserver.observe(kanopCard);
+
+  // ---------- Intendant agent log (live) ----------
+  const agentEvents = [
+    { i: '→', t: 'INGEST', m: 'Gmail sync · <b>3 new threads</b>, 1 priority' },
+    { i: '·', t: 'CLASSIFY', m: 'thread#8842 → <b>awaiting-reply</b> (conf 0.91)' },
+    { i: '·', t: 'QUEUE',    m: 'scheduling · <b>follow-up Tue 14:00</b>' },
+    { i: '→', t: 'DRAFT',    m: 'reply drafted · held for <b>human review</b>' },
+    { i: '·', t: 'OBSERVE',  m: 'cal · <b>Kanop weekly</b> in 12m · prep note ready' },
+    { i: '✓', t: 'COMMIT',   m: 'journal entry logged · <b>day-114</b>' },
+    { i: '·', t: 'MEMORY',   m: 'relationship graph updated · <b>+2 edges</b>' },
+    { i: '⚠', t: 'HALT',     m: 'tool<em>.</em>send · waiting on <b>consent</b>', err: true },
+    { i: '·', t: 'WAKE',     m: 'trigger: inbox quiet for 25m' },
+    { i: '→', t: 'INGEST',   m: 'slack · Kanop-eng · <b>2 flagged</b>' },
+    { i: '·', t: 'DEFER',    m: 'low-priority · batch → <b>17:30</b>' },
+    { i: '✓', t: 'RESOLVE',  m: 'ticket#412 · replied · <b>archived</b>' },
+    { i: '·', t: 'SCHED',    m: 'Saturday reserved · <b>deep work + garden</b>' },
+    { i: '→', t: 'DIGEST',   m: 'evening brief generated · 7 items · <b>ready</b>' },
+  ];
+  const logEl = document.getElementById('agentLog');
+  const statusEl = document.getElementById('agentStatus');
+  let evIdx = 0;
+  function tstamp() {
+    const d = new Date();
+    const hh = String(d.getHours()).padStart(2,'0');
+    const mm = String(d.getMinutes()).padStart(2,'0');
+    const ss = String(d.getSeconds()).padStart(2,'0');
+    return `${hh}:${mm}:${ss}`;
+  }
+  function pushAgent() {
+    const e = agentEvents[evIdx % agentEvents.length];
+    const div = document.createElement('div');
+    div.className = 'line' + (e.err ? ' err' : '');
+    div.innerHTML = `<span class="t">${tstamp()}</span><span class="i">${e.i}</span><span class="m"><b style="color:var(--muted-2); font-weight: 500; margin-right: 6px;">${e.t}</b>${e.m}</span>`;
+    logEl.appendChild(div);
+    // keep only last N
+    while (logEl.children.length > 6) logEl.removeChild(logEl.firstChild);
+    statusEl.innerHTML = e.err ? '● halted' : '● working';
+    statusEl.style.color = e.err ? 'var(--warn)' : 'var(--accent)';
+    evIdx++;
+    setTimeout(() => {
+      statusEl.innerHTML = '● idle';
+      statusEl.style.color = 'var(--muted)';
+    }, 1800);
+  }
+  // start after card visible
+  const agentCard = document.getElementById('agentLog').closest('.card');
+  const agentObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        pushAgent();
+        setInterval(pushAgent, 2200);
+        agentObserver.disconnect();
+      }
+    });
+  }, { threshold: .2 });
+  agentObserver.observe(agentCard);
+
+  // ---------- Kozy embers ----------
+  // Drifting specks rising from the warm source — abstract heat-from-within.
+  (() => {
+    const holder = document.getElementById('kozyEmbers');
+    if (!holder) return;
+    const COUNT = 14;
+    const specks = [];
+    for (let i = 0; i < COUNT; i++) {
+      const e = document.createElement('div');
+      e.className = 'kozy-ember';
+      // horizontal origin: cluster near center (50%) with some spread
+      const leftPct = 50 + (Math.random() - 0.5) * 55;
+      e.style.left = leftPct + '%';
+      // start near the base (the warm source)
+      const topPct = 68 + Math.random() * 18;
+      e.style.top = topPct + '%';
+      // horizontal drift as the ember rises
+      e.style.setProperty('--drift', ((Math.random() - 0.5) * 30).toFixed(1) + 'px');
+      // stagger + varied durations
+      e.style.animationDelay = (Math.random() * -6).toFixed(2) + 's';
+      e.style.animationDuration = (5 + Math.random() * 3).toFixed(2) + 's';
+      // size variety
+      const s = 0.6 + Math.random() * 1.0;
+      e.style.transform = `scale(${s})`;
+      holder.appendChild(e);
+      specks.push(e);
+    }
+  })();
+
+  // ---------- Subtle reveal on scroll ----------
+  const revealEls = document.querySelectorAll('.card, .post, .xp-row, .pub, .sec-head');
+  revealEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(8px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+  });
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+</script>
 </body>
 </html>
